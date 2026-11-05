@@ -1,0 +1,49 @@
+import type { ReactNode } from "react";
+import { Container } from "./Container";
+import { SectionHeading } from "./SectionHeading";
+import { Button } from "./Button";
+import { LEADCONNECTOR } from "~/data/site";
+
+/**
+ * The closing ask. Sits on ink so it reads as a full stop rather
+ * than one more band of cream.
+ */
+export function CTASection({
+  title = "Let's plan your group's journey",
+  lede = "Tell us who is travelling and what the trip is for. We will come back with a shape for it — destinations, timing, and what it would take to run.",
+  primaryLabel = "Book a consultation",
+  primaryHref = LEADCONNECTOR.bookingWidget,
+  secondary,
+}: {
+  title?: ReactNode;
+  lede?: ReactNode;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondary?: { label: string; to?: string; href?: string };
+}) {
+  return (
+    <section className="bg-ink py-20 lg:py-28">
+      <Container>
+        <div className="mx-auto max-w-[46rem] text-center">
+          <SectionHeading title={title} lede={lede} align="center" tone="dark" />
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button href={primaryHref} variant="onDark">
+              {primaryLabel}
+            </Button>
+            {secondary ? (
+              secondary.to ? (
+                <Button to={secondary.to} variant="ghost">
+                  {secondary.label}
+                </Button>
+              ) : (
+                <Button href={secondary.href!} variant="ghost">
+                  {secondary.label}
+                </Button>
+              )
+            ) : null}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}

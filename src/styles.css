@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════
+   LIFE LUXE TRAVEL — DESIGN SYSTEM
+   Tailwind v4 is CSS-first: @theme entries become real utilities,
+   so `bg-brand` and `font-display` below are generated from here.
+   ═══════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Brand ──────────────────────────────────────────────────
+     Three pinks, because one cannot pass contrast everywhere.
+     --brand      4.64:1 on cream, 4.96:1 under white — large text
+                  and fills.
+     --brand-deep 5.65:1 on ivory — small text on the tinted band.
+     --brand-lift 8.7:1 on ink — the ONLY pink legible on dark.
+                  Full-strength --brand has a luminance of 0.1618
+                  and can never reach 4.5:1 on any darker ground. */
+  --color-brand: #d1296a;
+  --color-brand-deep: #b31f54;
+  --color-brand-lift: #f08fb4;
+  --color-brand-wash: #fdf2f6;
+
+  /* ── Ground ─────────────────────────────────────────────────
+     Warm, not neutral. A travel page lit by afternoon light. */
+  --color-ink: #0c0b0a;
+  --color-ink-soft: #2a2522;
+  --color-cream: #faf7f2;
+  --color-ivory: #f2ede4;
+  --color-sand: #e7dfd2;
+  --color-warm: #5c534a;
+  --color-muted: #6f675d;
+  --color-rule: #e3dbcd;
+
+  /* ── Type ───────────────────────────────────────────────────
+     Playfair carries the voice; Lato does the work. */
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Lato", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --text-display: clamp(2.75rem, 7vw, 5.25rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.025em;
+  --text-title: clamp(2rem, 4.4vw, 3.25rem);
+  --text-title--line-height: 1.08;
+  --text-title--letter-spacing: -0.022em;
+  --text-lede: clamp(1.0625rem, 1.5vw, 1.3125rem);
+  --text-lede--line-height: 1.62;
+
+  /* ── Motion ─────────────────────────────────────────────────
+     One exponential ease-out, used everywhere, so the whole site
+     decelerates with the same hand. */
+  --ease-luxe: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --radius-card: 14px;
+
+  /* Offset and blur, never a zero-offset halo. */
+  --shadow-lift: 0 18px 48px -12px rgb(12 11 10 / 0.22);
+  --shadow-raise: 0 28px 70px -18px rgb(12 11 10 / 0.3);
+}
+
+/* ═══ BROWSER SURFACES ════════════════════════════════════════
+   The parts nobody draws still ship with the design. Leaving the
+   defaults here is the clearest tell that a page was assembled
+   rather than built. */
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+html {
+  scrollbar-color: var(--color-brand) var(--color-ivory);
+  scrollbar-width: thin;
+  -webkit-text-size-adjust: 100%;
+}
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand);
+  border: 3px solid var(--color-ivory);
+  border-radius: 99px;
+}
+:focus-visible {
+  outline: 2px solid var(--color-brand-deep);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+input,
+textarea,
+select {
+  caret-color: var(--color-brand);
+}
+/* Prose links get a readable underline rather than the browser's
+   baseline-hugging default. */
+a:not([class]) {
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* `clip`, never `hidden`: hidden makes this a scroll container
+       and silently kills position:sticky in every descendant. */
+    overflow-x: clip;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-warm);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    color: var(--color-ink);
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+  }
+  /* Numbers in a row of figures must not jitter between widths. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* The measure. Body copy outside 65–75ch is harder to read
+     regardless of how good the type is. */
+  .measure {
+    max-width: 68ch;
+  }
+
+  /* The site's one repeating motif: a short pink rule marking a
+     start. Cheaper and quieter than an eyebrow, which is banned. */
+  .rule-mark {
+    width: 46px;
+    height: 2px;
+    background: var(--color-brand);
+    border: 0;
+  }
+  .rule-mark-lift {
+    background: var(--color-brand-lift);
+  }
+}
+
+/* ═══ MOTION ══════════════════════════════════════════════════
+   The page's authored moment: content settles upward once as it
+   enters. It does not loop, drift or zoom. */
+@keyframes luxe-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+.reveal.is-in {
+  animation: luxe-rise 0.9s var(--ease-luxe) forwards;
+}
+
+/* Anyone who asked their OS for less motion gets the finished
+   state immediately — never a blank page. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-in {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
