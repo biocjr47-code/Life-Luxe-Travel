@@ -65,7 +65,7 @@ export const GUIDES: Guide[] = [
       "What to actually pack for game drives, early starts and cool evenings on the reserve.",
     sections: ["Safari essentials", "Clothing", "Health & comfort"],
     image: "/images/sa-game-lodge-group.jpg",
-    imageAlt: "The Life Luxe group at a South African game lodge",
+    imageAlt: "Travellers together on a lawn beside a life-size elephant sculpture in South Africa",
     href: "https://lifeluxetravel.com/travel-style-guides",
   },
   {
@@ -79,7 +79,7 @@ export const GUIDES: Guide[] = [
       "Sun protection",
     ],
     image: "/images/bali-rice-terrace.jpg",
-    imageAlt: "Green stepped rice terraces on a Balinese hillside",
+    imageAlt: "A traveller in a yellow dress on a path in Bali, green terraces behind",
     href: "https://lifeluxetravel.com/travel-style-guides",
   },
   {
@@ -88,7 +88,7 @@ export const GUIDES: Guide[] = [
       "The long-haul list: what makes the flight bearable and what survives a week in a suitcase.",
     sections: ["Travel comfort", "Travel beauty", "Tech essentials"],
     image: "/images/marrakech-mint-tea.jpg",
-    imageAlt: "Moroccan mint tea poured into glasses on a patterned table",
+    imageAlt: "A silver teapot and a glass of mint tea on a red checked tablecloth",
     href: "https://lifeluxetravel.com/travel-style-guides",
   },
 ];

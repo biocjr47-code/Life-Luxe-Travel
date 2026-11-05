@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { LEADCONNECTOR, NAV } from "~/data/site";
+import { LEADCONNECTOR, NAV, SITE } from "~/data/site";
 
 /**
  * Spread's floating capsule header.
@@ -52,12 +52,22 @@ export function PillNav() {
             : "border-white/25 bg-ink/35"
         }`}
       >
-        <div className="flex items-center gap-2 p-1.5 lg:gap-1">
+        <div className="flex items-center gap-2 p-1.5 lg:gap-1 lg:p-2">
+          {/* The mark, not a text wordmark. The artwork is already a
+              white disc, so it needs no plate behind it — adding one
+              produced a second ring that read as a sticker. */}
           <Link
             to="/"
-            className="shrink-0 rounded-full px-4 py-2.5 font-display text-[1.0625rem] text-white no-underline lg:px-5"
+            aria-label={`${SITE.name}, home`}
+            className="shrink-0 rounded-full px-1.5 py-0.5"
           >
-            Life Luxe
+            <img
+              src="/images/llt-logo.png"
+              alt=""
+              width={56}
+              height={56}
+              className="size-14 object-contain transition-transform duration-[350ms] ease-luxe hover:scale-105 lg:size-[68px]"
+            />
           </Link>
 
           {/* The collapsing link set. grid-rows 0fr → 1fr animates to

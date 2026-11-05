@@ -81,7 +81,7 @@ export function ScatterField({
       gsap.utils.toArray<HTMLElement>(".sf-sat").forEach((el) => {
         const depth = Number(el.dataset.depth ?? 0.5);
         gsap.to(el, {
-          yPercent: -26 * (0.35 + depth),
+          yPercent: -16 * (0.35 + depth),
           ease: "none",
           scrollTrigger: {
             trigger: root.current,
@@ -120,7 +120,7 @@ export function ScatterField({
           appear in the gallery with captions, so nothing is lost. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 hidden lg:block"
+        className="pointer-events-none absolute inset-x-0 -inset-y-10 hidden lg:block"
       >
         {satellites.map((s) => (
           <figure

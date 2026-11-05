@@ -49,6 +49,6 @@ export const TESTIMONIALS: Testimonial[] = [
     ],
     trip: "South Africa — Johannesburg & Kruger",
     image: "/images/sa-game-lodge-group.jpg",
-    imageAlt: "The Life Luxe group together at a South African game lodge",
+    imageAlt: "Five travellers standing together on a lawn beside a life-size elephant sculpture in South Africa",
   },
 ];

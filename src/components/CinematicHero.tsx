@@ -23,7 +23,7 @@ export function CinematicHero({
   subtitle,
   image,
   imageAlt,
-  focus = "center 42%",
+  focus = "30% 42%",
   primary,
   secondary,
   sealText = "LIFE LUXE TRAVEL · EFFORTLESS GROUP TRIPS · ",
@@ -94,13 +94,13 @@ export function CinematicHero({
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(104deg, rgb(12 11 10 / .58) 0%, rgb(12 11 10 / .24) 42%, rgb(12 11 10 / 0) 64%)," +
+            "linear-gradient(100deg, rgb(12 11 10 / .72) 0%, rgb(12 11 10 / .40) 38%, rgb(12 11 10 / .06) 62%, rgb(12 11 10 / 0) 74%)," +
             "linear-gradient(180deg, rgb(12 11 10 / .44) 0%, rgb(12 11 10 / .12) 28%, rgb(12 11 10 / .66) 70%, rgb(12 11 10 / .94) 100%)",
         }}
       />
 
       <div className="relative mx-auto w-full max-w-[1180px] px-5 pt-36 pb-20 sm:px-8 lg:px-11 lg:pb-28">
-        <h1 className="font-display text-[clamp(2.75rem,7.6vw,6rem)] leading-[1.02] tracking-[-0.03em] text-white italic">
+        <h1 className="max-w-[16ch] font-display text-[clamp(2.5rem,6.6vw,5.25rem)] leading-[1.04] tracking-[-0.028em] text-white italic">
           {lines.map((line) => (
             // Each line is its own clipping mask, so the rise reads
             // as type emerging from behind an edge.

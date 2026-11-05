@@ -11,7 +11,7 @@ export function MarqueeBand() {
   const row = (hidden: boolean) => (
     <ul
       aria-hidden={hidden || undefined}
-      className="flex shrink-0 items-center gap-16 pr-16"
+      className="flex shrink-0 items-center gap-14 pr-14 lg:gap-20 lg:pr-20"
     >
       {CERTIFICATIONS.map((c) => (
         <li key={c.name + String(hidden)}>
@@ -20,7 +20,7 @@ export function MarqueeBand() {
             alt={hidden ? "" : c.alt}
             loading="lazy"
             decoding="async"
-            className="h-10 w-auto max-w-none object-contain opacity-75 mix-blend-multiply"
+            className="h-12 w-auto max-w-none object-contain opacity-90 mix-blend-multiply lg:h-14"
           />
         </li>
       ))}

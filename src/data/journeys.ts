@@ -1,15 +1,24 @@
 /**
  * The gallery, grouped by journey.
  *
- * Every photograph here is Terry's own, taken on a Life Luxe trip.
- * Captions describe what is actually in the frame — two are
- * deliberately vague ("Looking out to sea", "In the highlands")
- * because the source data did not support more than that, and a
- * guessed caption is worse than a modest one.
+ * ── A CORRECTION, AND THE RULE THAT CAME OUT OF IT ──────────────
+ * The first version of this file described each photograph from its
+ * FILENAME. That was wrong, and several descriptions were simply
+ * false: `bali-rice-terrace.jpg` is a woman in a yellow dress beside
+ * a statue; `sa-waterfront.jpg` is someone inside a "Cape Town"
+ * sculpture; `sa-game-lodge-group.jpg` is the group beside an
+ * elephant sculpture on a lawn, not inside a lodge.
  *
- * `span` drives the masonry rhythm: "wide" tiles take two columns on
- * desktop. Mixing them is what stops the grid reading as a
- * contact sheet.
+ * Alt text that describes something not in the photograph is worse
+ * than no alt text at all — a screen-reader user is told a thing
+ * that is not there. Every line below was written after looking at
+ * the image.
+ *
+ * Filenames were left alone: they are referenced in the GHL media
+ * library and renaming them would break the live site.
+ *
+ * Where the location cannot be confirmed from the image, the caption
+ * says less rather than guessing.
  */
 
 export type Photo = {
@@ -34,44 +43,44 @@ export const JOURNEYS: Journey[] = [
     title: "South Africa",
     when: "September 2026",
     blurb:
-      "Cape Town and the Cape Peninsula — Table Mountain, the waterfront, and a game lodge inland. A family reunion that became something larger.",
+      "Cape Town and the Cape Peninsula — Table Mountain, the city below it, and a group that came back changed.",
     photos: [
       {
         src: "/images/hero-cape-town.jpg",
-        alt: "A Life Luxe traveller sitting on a bench above the coast near Cape Town, watching surf break below the Twelve Apostles",
+        alt: "A traveller sitting on a bench above the coast near Cape Town, watching surf break below the mountains",
         caption: "The long view",
         place: "Camps Bay, Cape Town",
         span: "wide",
       },
       {
-        src: "/images/sa-table-mountain.jpg",
-        alt: "Table Mountain rising behind Cape Town under heavy cloud",
-        caption: "Table Mountain, under its tablecloth",
-        place: "Cape Town",
+        src: "/images/sa-table-mountain-view.jpg",
+        alt: "A traveller on a hillside path, arm outstretched towards Cape Town and the mountains across the valley",
+        caption: "Pointing it out",
+        place: "Above Cape Town",
       },
       {
         src: "/images/sa-game-lodge-group.jpg",
-        alt: "The Life Luxe group gathered together at a South African game lodge",
-        caption: "The whole group, at the lodge",
+        alt: "Five travellers standing together on a lawn beside a life-size elephant sculpture",
+        caption: "The group, and the elephant",
         place: "South Africa",
       },
       {
         src: "/images/sa-waterfront.jpg",
-        alt: "Boats and buildings along the V&A Waterfront in Cape Town",
-        caption: "Along the waterfront",
-        place: "V&A Waterfront, Cape Town",
+        alt: "A traveller standing inside a large sculpted bench that spells out Cape Town",
+        caption: "In the letters",
+        place: "Cape Town",
       },
       {
         src: "/images/sa-city-hall-balcony.jpg",
-        alt: "The balcony of Cape Town City Hall, where Nelson Mandela gave his first speech after release",
+        alt: "The balcony of Cape Town City Hall, where Nelson Mandela spoke on the day of his release",
         caption: "The balcony",
         place: "Cape Town City Hall",
       },
       {
-        src: "/images/sa-table-mountain-view.jpg",
-        alt: "The view out over Cape Town and the bay from the slopes of Table Mountain",
-        caption: "Above the bay",
-        place: "Table Mountain",
+        src: "/images/sa-table-mountain.jpg",
+        alt: "A traveller framed inside a yellow photo frame marked Table Mountain, Cape Town, South Africa",
+        caption: "Through the frame",
+        place: "Table Mountain, Cape Town",
         span: "wide",
       },
     ],
@@ -85,15 +94,15 @@ export const JOURNEYS: Journey[] = [
     photos: [
       {
         src: "/images/greece-caldera.jpg",
-        alt: "The Santorini caldera, with whitewashed buildings on the cliff edge above deep blue water",
+        alt: "The Santorini caldera, whitewashed buildings along the cliff edge above deep blue water",
         caption: "The caldera",
         place: "Santorini",
         span: "wide",
       },
       {
         src: "/images/greece-erechtheion.jpg",
-        alt: "The Caryatid columns of the Erechtheion on the Athens Acropolis",
-        caption: "The Erechtheion",
+        alt: "A traveller standing in front of the columns of the Erechtheion on the Athens Acropolis",
+        caption: "At the Erechtheion",
         place: "Acropolis, Athens",
       },
       {
@@ -119,37 +128,37 @@ export const JOURNEYS: Journey[] = [
     photos: [
       {
         src: "/images/marrakech-majorelle-pavilion.jpg",
-        alt: "The cobalt blue pavilion at the Jardin Majorelle in Marrakech",
+        alt: "The cobalt blue pavilion at the Jardin Majorelle, with yellow and red planters on its terrace",
         caption: "Majorelle blue",
         place: "Jardin Majorelle",
       },
       {
         src: "/images/marrakech-painted-ceiling.jpg",
-        alt: "An intricately painted and carved Moroccan ceiling",
+        alt: "An intricately painted and gilded Moroccan dome ceiling seen from directly below",
         caption: "Overhead",
         place: "Marrakech",
       },
       {
         src: "/images/marrakech-bab-agnaou.jpg",
-        alt: "The carved stone gateway of Bab Agnaou in the Marrakech medina walls",
+        alt: "The carved stone archway of Bab Agnaou, with a yellow taxi passing on the road in front",
         caption: "Bab Agnaou",
         place: "Marrakech medina",
       },
       {
         src: "/images/marrakech-mint-tea.jpg",
-        alt: "A pot of Moroccan mint tea poured into glasses on a patterned table",
-        caption: "Mint tea, poured high",
+        alt: "A silver teapot and a glass of mint tea on a red checked tablecloth",
+        caption: "Mint tea",
         place: "Marrakech",
       },
       {
         src: "/images/marrakech-ysl.jpg",
-        alt: "The terracotta brickwork facade of the Yves Saint Laurent museum in Marrakech",
-        caption: "The YSL museum",
+        alt: "A traveller in a white shirt and hat standing beside the YSL monogram on a pink wall",
+        caption: "At the YSL museum",
         place: "Marrakech",
       },
       {
         src: "/images/marrakech-bamboo-bench.jpg",
-        alt: "A shaded bench surrounded by bamboo in a Marrakech garden",
+        alt: "A traveller seated on a pale green bench surrounded by tall bamboo",
         caption: "Shade, found",
         place: "Marrakech",
         span: "wide",
@@ -165,7 +174,7 @@ export const JOURNEYS: Journey[] = [
     photos: [
       {
         src: "/images/nye-vv-group-embarkation.jpg",
-        alt: "The Life Luxe group at the Virgin Voyages terminal on embarkation day",
+        alt: "The Life Luxe group gathered at the cruise terminal on embarkation day",
         caption: "Boarding day",
         place: "Miami",
         span: "wide",
@@ -195,25 +204,25 @@ export const JOURNEYS: Journey[] = [
     title: "Bali",
     when: "Indonesia",
     blurb:
-      "Rice terraces in the highlands, temple gates at dawn, and the jungle swing above the valley.",
+      "Terraced hillsides, temple courtyards, and a flower swing out over the valley.",
     photos: [
       {
-        src: "/images/bali-rice-terrace.jpg",
-        alt: "Stepped green rice terraces on a Balinese hillside",
-        caption: "In the highlands",
+        src: "/images/bali-jungle-swing.jpg",
+        alt: "A traveller in orange on a swing ringed with flowers, suspended above palm forest",
+        caption: "Out over the valley",
         place: "Bali",
         span: "wide",
       },
       {
         src: "/images/bali-temple-gate.jpg",
-        alt: "A split candi bentar temple gate in Bali framing the landscape beyond",
-        caption: "The split gate",
+        alt: "A traveller holding up a green fruit in a temple courtyard hung with vines",
+        caption: "In the courtyard",
         place: "Bali",
       },
       {
-        src: "/images/bali-jungle-swing.jpg",
-        alt: "A traveller on a jungle swing above a forested Balinese valley",
-        caption: "Out over the valley",
+        src: "/images/bali-rice-terrace.jpg",
+        alt: "A traveller in a yellow dress on a paved path beside a carved stone figure, green terraces behind",
+        caption: "On the path",
         place: "Bali",
       },
     ],
@@ -223,36 +232,36 @@ export const JOURNEYS: Journey[] = [
     title: "The Kentucky Derby",
     when: "Louisville, Kentucky",
     blurb:
-      "Churchill Downs on Derby day — hats, the paddock, and the walk down to trackside.",
+      "Churchill Downs on Derby day — hats, the rail, and the walk down to trackside.",
     photos: [
       {
         src: "/images/derby-our-group.jpg",
-        alt: "The Life Luxe group together in Derby day outfits at Churchill Downs",
+        alt: "The Life Luxe group together in Derby day hats and suits, beside the coach at Churchill Downs",
         caption: "Our group, Derby day",
         place: "Churchill Downs",
         span: "wide",
       },
       {
         src: "/images/derby-hats.jpg",
-        alt: "Derby day hats in the stands at Churchill Downs",
+        alt: "Two travellers in wide purple and pink Derby hats, smiling at the camera",
         caption: "The hats",
         place: "Churchill Downs",
       },
       {
         src: "/images/derby-day-churchill-downs.jpg",
-        alt: "The twin spires and crowds at Churchill Downs on Derby day",
-        caption: "Churchill Downs",
-        place: "Louisville, Kentucky",
+        alt: "A traveller in a green hat at the rail, with horses and the grandstand behind",
+        caption: "At the rail",
+        place: "Churchill Downs",
       },
       {
         src: "/images/terry-derby.jpg",
-        alt: "Terry Powell beside the Secretariat statue at Churchill Downs",
+        alt: "Terry Powell in an orange dress beside the Secretariat statue at Churchill Downs",
         caption: "Beside Secretariat",
         place: "Churchill Downs",
       },
       {
         src: "/images/derby-trackside.jpg",
-        alt: "The view down to the track at Churchill Downs",
+        alt: "A traveller in a purple hat and patterned outfit standing at the trackside rail",
         caption: "Trackside",
         place: "Churchill Downs",
       },
@@ -267,7 +276,7 @@ export const JOURNEYS: Journey[] = [
     photos: [
       {
         src: "/images/terry-abu-dhabi.jpg",
-        alt: "Terry Powell in a blue and gold gown in the courtyard of the Sheikh Zayed Grand Mosque, Abu Dhabi",
+        alt: "Terry Powell in a blue and gold gown in the marble courtyard of the Sheikh Zayed Grand Mosque",
         caption: "The Grand Mosque courtyard",
         place: "Abu Dhabi",
       },

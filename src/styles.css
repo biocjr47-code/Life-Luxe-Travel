@@ -18,7 +18,10 @@
   --color-brand: #d1296a;
   --color-brand-deep: #b31f54;
   --color-brand-lift: #f08fb4;
-  --color-brand-wash: #fdf2f6;
+  /* Warmed toward the cream/ivory family. The original #fdf2f6
+     was a cooler candy pink and read as a different temperature
+     from every other surface on the page. */
+  --color-brand-wash: #faf1ef;
 
   /* ── Ground ─────────────────────────────────────────────────
      Warm, not neutral. A travel page lit by afternoon light. */

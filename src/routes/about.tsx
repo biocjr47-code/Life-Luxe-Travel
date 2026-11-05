@@ -168,7 +168,7 @@ function About() {
             <Reveal>
               <img
                 src="/images/sa-game-lodge-group.jpg"
-                alt="A Life Luxe group together at a South African game lodge"
+                alt="Five travellers together on a lawn beside a life-size elephant sculpture in South Africa"
                 loading="lazy"
                 decoding="async"
                 className="aspect-[4/5] w-full rounded-[var(--radius-card)] object-cover"

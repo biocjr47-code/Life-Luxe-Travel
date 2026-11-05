@@ -73,7 +73,7 @@ export const TRIPS: Trip[] = [
       "Churchill Downs on Derby day — a trip Terry has hosted before. Details coming soon.",
     status: "preview",
     image: "/images/derby-hats.jpg",
-    imageAlt: "Derby day hats in the stands at Churchill Downs",
+    imageAlt: "Two travellers in wide purple and pink Derby hats",
   },
   {
     year: "2028",

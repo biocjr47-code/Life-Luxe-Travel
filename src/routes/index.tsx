@@ -31,15 +31,15 @@ const STAT_ICONS = { users: Users, map: Map, globe: Globe } as const;
  * rather than as drift.
  */
 const SATELLITES: Satellite[] = [
-  { src: "/images/marrakech-majorelle-pavilion.jpg", alt: "", caption: "", place: "", x: 3, y: 10, depth: 0.85, rotate: -6 },
-  { src: "/images/bali-rice-terrace.jpg", alt: "", caption: "", place: "", x: 16, y: 48, depth: 0.45, rotate: 4, span: "wide" },
-  { src: "/images/greece-erechtheion.jpg", alt: "", caption: "", place: "", x: 1, y: 72, depth: 0.62, rotate: 7 },
-  { src: "/images/derby-hats.jpg", alt: "", caption: "", place: "", x: 20, y: 2, depth: 0.3, rotate: 9 },
-  { src: "/images/sa-table-mountain.jpg", alt: "", caption: "", place: "", x: 80, y: 6, depth: 0.78, rotate: 5 },
-  { src: "/images/nye-vv-2026-cozumel.jpg", alt: "", caption: "", place: "", x: 73, y: 44, depth: 0.4, rotate: -5, span: "wide" },
-  { src: "/images/terry-abu-dhabi.jpg", alt: "", caption: "", place: "", x: 86, y: 68, depth: 0.68, rotate: -8 },
-  { src: "/images/marrakech-mint-tea.jpg", alt: "", caption: "", place: "", x: 68, y: 84, depth: 0.34, rotate: 6 },
-  { src: "/images/sa-waterfront.jpg", alt: "", caption: "", place: "", x: 10, y: 88, depth: 0.5, rotate: -4 },
+  { src: "/images/marrakech-majorelle-pavilion.jpg", alt: "", caption: "", place: "", x: 4, y: 16, depth: 0.82, rotate: -6 },
+  { src: "/images/bali-rice-terrace.jpg", alt: "", caption: "", place: "", x: 17, y: 47, depth: 0.45, rotate: 4, span: "wide" },
+  { src: "/images/greece-erechtheion.jpg", alt: "", caption: "", place: "", x: 3, y: 64, depth: 0.6, rotate: 7 },
+  { src: "/images/derby-hats.jpg", alt: "", caption: "", place: "", x: 21, y: 10, depth: 0.3, rotate: 9 },
+  { src: "/images/sa-table-mountain.jpg", alt: "", caption: "", place: "", x: 79, y: 14, depth: 0.74, rotate: 5 },
+  { src: "/images/nye-vv-2026-cozumel.jpg", alt: "", caption: "", place: "", x: 72, y: 45, depth: 0.4, rotate: -5, span: "wide" },
+  { src: "/images/terry-abu-dhabi.jpg", alt: "", caption: "", place: "", x: 84, y: 63, depth: 0.64, rotate: -8 },
+  { src: "/images/marrakech-mint-tea.jpg", alt: "", caption: "", place: "", x: 76, y: 79, depth: 0.34, rotate: 6 },
+  { src: "/images/sa-waterfront.jpg", alt: "", caption: "", place: "", x: 12, y: 79, depth: 0.5, rotate: -4 },
 ];
 
 function Home() {
@@ -184,7 +184,7 @@ function Home() {
         <section className="relative isolate flex min-h-[72svh] items-end overflow-hidden">
           <img
             src="/images/nye-vv-group-embarkation.jpg"
-            alt="The Life Luxe group at the Virgin Voyages terminal on embarkation day in Miami"
+            alt="The Life Luxe group gathered at the cruise terminal on embarkation day in Miami"
             loading="lazy"
             decoding="async"
             className="absolute inset-0 -z-10 size-full object-cover"
@@ -205,14 +205,23 @@ function Home() {
             <h2 className="max-w-[20ch] font-display text-[clamp(2rem,4.6vw,3.5rem)] leading-[1.06] tracking-[-0.025em] text-white italic">
               {nye.title}
             </h2>
-            <p className="mt-5 max-w-[48ch] text-[1.0625rem] leading-relaxed text-white/85">
+            {/* The date sits AFTER the heading as a detail line, not
+                above it as a kicker. */}
+            {/* White, not brand-lift. The pink tint measures 8.7:1
+                on flat ink but only 3.09:1 here, because the terminal
+                photograph stays bright behind the gradient. White is
+                6.5:1 on the same pixels. */}
+            <p className="mt-4 text-[0.8125rem] font-bold tracking-[0.16em] text-white/90 uppercase">
+              {nye.when} · {nye.where}
+            </p>
+            <p className="mt-4 max-w-[48ch] text-[1.0625rem] leading-relaxed text-white/85">
               {nye.blurb}
             </p>
             <a
               href={nye.href}
               className="mt-9 inline-flex min-h-[54px] items-center rounded-full bg-white px-9 text-[0.9375rem] font-bold text-ink no-underline transition-transform duration-300 ease-luxe hover:scale-[1.03]"
             >
-              {nye.when}
+              See the sailing
             </a>
           </div>
         </section>
@@ -243,8 +252,8 @@ function Home() {
 
         {/* ── Checklist opt-in ─────────────────────────────── */}
         <section className="bg-brand-wash py-24 lg:py-32">
-          <div className="mx-auto grid max-w-[1180px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:px-11">
-            <div>
+          <div className="mx-auto grid max-w-[1180px] items-start gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:px-11">
+            <div className="lg:pt-4">
               <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.06] tracking-[-0.024em] text-ink">
                 The Ultimate Group Trip Planning Checklist
               </h2>
