@@ -120,7 +120,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             aria-expanded={open}
             aria-controls="primary-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex size-11 items-center justify-center rounded-[3px] border border-white/40 text-white lg:hidden"
+            className="flex size-11 items-center justify-center border border-white/40 text-white lg:hidden"
           >
             {open ? (
               <X aria-hidden="true" className="size-5" />

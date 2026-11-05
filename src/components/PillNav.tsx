@@ -4,7 +4,8 @@ import { Menu, X } from "lucide-react";
 import { LEADCONNECTOR, NAV, SITE } from "~/data/site";
 
 /**
- * Spread's floating capsule header.
+ * A floating header bar, after joinspread.app's collapsing nav —
+ * but squared, because the house geometry has no rounded corners.
  *
  * It sits over the hero on a translucent, blurred pill and COLLAPSES
  * on scroll: the link set drops away and only the wordmark and the
@@ -46,7 +47,7 @@ export function PillNav() {
            it washes out to light grey and the white label drops to
            roughly 2:1. Once scrolled it goes near-solid, which holds
            on any section. */
-        className={`pointer-events-auto flex max-w-[min(100%,66rem)] flex-col items-stretch overflow-hidden rounded-[28px] border shadow-[0_4px_20px_rgba(12,11,10,0.1)] backdrop-blur-xl transition-[background-color,border-color,border-radius] duration-500 ease-luxe lg:flex-row lg:items-center lg:rounded-full ${
+        className={`pointer-events-auto flex max-w-[min(100%,66rem)] flex-col items-stretch overflow-hidden border shadow-[0_4px_20px_rgba(12,11,10,0.1)] backdrop-blur-xl transition-[background-color,border-color] duration-500 ease-luxe lg:flex-row lg:items-center ${
           collapsed || open
             ? "border-white/12 bg-ink/95"
             : "border-white/25 bg-ink/35"
@@ -59,7 +60,7 @@ export function PillNav() {
           <Link
             to="/"
             aria-label={`${SITE.name}, home`}
-            className="shrink-0 rounded-full px-1.5 py-0.5"
+            className="shrink-0 px-1.5 py-0.5"
           >
             <img
               src="/images/llt-logo.png"
@@ -87,7 +88,7 @@ export function PillNav() {
                     <Link
                       to={item.to}
                       aria-current={current ? "page" : undefined}
-                      className={`inline-flex items-center rounded-full px-4 py-2.5 text-[0.875rem] no-underline transition-colors duration-300 ${
+                      className={`inline-flex items-center px-4 py-2.5 text-[0.8125rem] font-bold tracking-[0.1em] uppercase no-underline transition-colors duration-300 ${
                         current
                           ? "bg-white/15 text-white"
                           : "text-white/80 hover:bg-white/10 hover:text-white"
@@ -105,7 +106,7 @@ export function PillNav() {
             href={LEADCONNECTOR.bookingWidget}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-auto inline-flex min-h-11 shrink-0 items-center rounded-full bg-brand px-5 py-2.5 text-[0.875rem] font-bold whitespace-nowrap text-white no-underline transition-[background-color,transform] duration-300 ease-luxe hover:scale-[1.03] hover:bg-brand-deep lg:ml-1"
+            className="ml-auto inline-flex min-h-11 shrink-0 items-center border border-brand bg-brand px-5 text-[0.6875rem] font-bold tracking-[0.18em] whitespace-nowrap text-white uppercase no-underline transition-[background-color,color,letter-spacing] duration-300 ease-luxe hover:bg-transparent hover:tracking-[0.22em] hover:text-white lg:ml-1 lg:px-6"
           >
             Plan your trip
           </a>
@@ -116,7 +117,7 @@ export function PillNav() {
             aria-expanded={open}
             aria-controls="pill-nav-panel"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex size-11 shrink-0 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 lg:hidden"
+            className="flex size-11 shrink-0 items-center justify-center border border-white/30 text-white transition-colors hover:bg-white/10 lg:hidden"
           >
             {open ? (
               <X aria-hidden="true" className="size-5" />
@@ -141,7 +142,7 @@ export function PillNav() {
                   <Link
                     to={item.to}
                     aria-current={current ? "page" : undefined}
-                    className={`flex min-h-12 items-center rounded-2xl px-4 text-[0.9375rem] no-underline transition-colors ${
+                    className={`flex min-h-12 items-center px-4 text-[0.875rem] font-bold tracking-[0.1em] uppercase no-underline transition-colors ${
                       current ? "bg-white/15 text-white" : "text-white/85"
                     }`}
                   >

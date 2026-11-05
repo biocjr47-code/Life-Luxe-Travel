@@ -64,7 +64,7 @@ export function GhlFormEmbed({
 
   return (
     <div ref={ref}>
-      <div className="overflow-hidden rounded-[18px] border border-rule bg-white shadow-[0_4px_20px_rgba(12,11,10,0.06)]">
+      <div className="overflow-hidden border border-rule bg-white shadow-[0_4px_20px_rgba(12,11,10,0.06)]">
         {/* Until the iframe paints, this sits behind it so the column
             is never an empty bordered rectangle. */}
         {!loaded && (

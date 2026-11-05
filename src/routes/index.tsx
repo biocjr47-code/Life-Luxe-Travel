@@ -7,6 +7,7 @@ import { CinematicHero } from "~/components/CinematicHero";
 import { ScatterField, type Satellite } from "~/components/ScatterField";
 import { SplitFeature } from "~/components/SplitFeature";
 import { MarqueeBand } from "~/components/MarqueeBand";
+import { Button } from "~/components/Button";
 import { GhlFormEmbed } from "~/integrations/GhlFormEmbed";
 import { seo } from "~/components/Seo";
 import { useGsap, useSmoothScroll } from "~/lib/motion";
@@ -151,16 +152,11 @@ function Home() {
           imageAlt="Terry Powell, founder of Life Luxe Travel, standing by the water in Greece"
           footnote="Terry Powell · Founder"
         >
-          <Link
-            to="/about"
-            className="group mt-8 inline-flex min-h-[52px] items-center gap-2 rounded-full border border-sand px-7 text-[0.9375rem] text-ink no-underline transition-colors duration-300 ease-luxe hover:border-ink hover:bg-ink hover:text-white"
-          >
-            Meet Terry
-            <ArrowUpRight
-              aria-hidden="true"
-              className="size-4 transition-transform duration-300 ease-luxe group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </Link>
+          <div className="mt-8">
+            <Button to="/about" variant="quiet" size="sm">
+              Meet Terry
+            </Button>
+          </div>
         </SplitFeature>
 
         <SplitFeature
@@ -171,13 +167,11 @@ function Home() {
           imageAlt={greece.imageAlt!}
           footnote={`${greece.when} · ${greece.where}`}
         >
-          <a
-            href={greece.href}
-            className="group mt-8 inline-flex min-h-[52px] items-center gap-2 rounded-full bg-brand px-7 text-[0.9375rem] font-bold text-white no-underline transition-[background-color,transform] duration-300 ease-luxe hover:scale-[1.03] hover:bg-brand-deep"
-          >
-            Trip details
-            <ArrowUpRight aria-hidden="true" className="size-4" />
-          </a>
+          <div className="mt-8">
+            <Button href={greece.href!} size="sm">
+              Trip details
+            </Button>
+          </div>
         </SplitFeature>
 
         {/* ── Full-bleed band ──────────────────────────────── */}
@@ -217,12 +211,11 @@ function Home() {
             <p className="mt-4 max-w-[48ch] text-[1.0625rem] leading-relaxed text-white/85">
               {nye.blurb}
             </p>
-            <a
-              href={nye.href}
-              className="mt-9 inline-flex min-h-[54px] items-center rounded-full bg-white px-9 text-[0.9375rem] font-bold text-ink no-underline transition-transform duration-300 ease-luxe hover:scale-[1.03]"
-            >
-              See the sailing
-            </a>
+            <div className="mt-9">
+              <Button href={nye.href!} variant="onDark">
+                See the sailing
+              </Button>
+            </div>
           </div>
         </section>
 
@@ -239,13 +232,11 @@ function Home() {
               <figcaption className="q-part mt-7 text-[0.8125rem] font-bold tracking-[0.14em] text-muted uppercase">
                 {TESTIMONIALS[0]!.trip}
               </figcaption>
-              <Link
-                to="/testimonials"
-                className="q-part mt-9 inline-flex min-h-[52px] items-center gap-2 rounded-full border border-sand px-7 text-[0.9375rem] text-ink no-underline transition-colors duration-300 ease-luxe hover:border-ink hover:bg-ink hover:text-white"
-              >
-                Read more journeys
-                <ArrowUpRight aria-hidden="true" className="size-4" />
-              </Link>
+              <div className="q-part mt-9">
+                <Button to="/testimonials" variant="quiet" size="sm">
+                  Read more journeys
+                </Button>
+              </div>
             </figure>
           </div>
         </section>
@@ -282,20 +273,12 @@ function Home() {
               would take to run.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-              <a
-                href={LEADCONNECTOR.bookingWidget}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-[54px] items-center justify-center rounded-full bg-white px-9 text-[0.9375rem] font-bold text-ink no-underline transition-transform duration-300 ease-luxe hover:scale-[1.03]"
-              >
+              <Button href={LEADCONNECTOR.bookingWidget} variant="onDark">
                 Book a consultation
-              </a>
-              <Link
-                to="/gallery"
-                className="inline-flex min-h-[54px] items-center justify-center rounded-full border border-white/35 px-8 text-[0.9375rem] text-white no-underline transition-colors duration-300 ease-luxe hover:border-white hover:bg-white hover:text-ink"
-              >
+              </Button>
+              <Button to="/gallery" variant="ghost">
                 See the gallery
-              </Link>
+              </Button>
             </div>
           </div>
         </section>

@@ -53,7 +53,10 @@
      decelerates with the same hand. */
   --ease-luxe: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --radius-card: 14px;
+  /* Square. The house style has no rounded cards or buttons; the
+     only radii left on the site are browser surfaces (the scrollbar
+     thumb and the focus ring), which are not part of the brand. */
+  --radius-card: 0px;
 
   /* Offset and blur, never a zero-offset halo. */
   --shadow-lift: 0 18px 48px -12px rgb(12 11 10 / 0.22);

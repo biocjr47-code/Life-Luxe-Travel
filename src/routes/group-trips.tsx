@@ -105,7 +105,7 @@ function GroupTrips() {
                               {trip.when}
                             </span>
                             {trip.status === "preview" ? (
-                              <span className="rounded-full border border-sand bg-cream px-3 py-1 text-[0.6875rem] font-bold tracking-[0.12em] text-muted uppercase">
+                              <span className="border border-sand bg-cream px-3 py-1 text-[0.6875rem] font-bold tracking-[0.12em] text-muted uppercase">
                                 Details coming soon
                               </span>
                             ) : null}
@@ -154,7 +154,7 @@ function GroupTrips() {
               const Icon = GETAWAY_ICONS[g.icon];
               return (
                 <Reveal as="li" key={g.title} delay={i * 70}>
-                  <div className="flex items-center gap-3.5 rounded-full border border-sand bg-cream py-3 pr-6 pl-4">
+                  <div className="flex items-center gap-3.5 border border-sand bg-cream py-3 pr-6 pl-4">
                     <Icon
                       aria-hidden="true"
                       className="size-[18px] shrink-0 text-brand-deep"

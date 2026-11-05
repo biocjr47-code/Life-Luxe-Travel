@@ -141,7 +141,7 @@ export function ScatterField({
               alt=""
               loading="lazy"
               decoding="async"
-              className="w-full rounded-[14px] object-cover shadow-[0_4px_20px_rgba(12,11,10,0.12)]"
+              className="w-full object-cover shadow-[0_4px_20px_rgba(12,11,10,0.12)]"
               style={{ aspectRatio: s.span === "wide" ? "3/2" : "3/4" }}
             />
           </figure>
@@ -156,7 +156,7 @@ export function ScatterField({
             alt={centre.alt}
             loading="lazy"
             decoding="async"
-            className="aspect-[16/10] w-full rounded-[18px] object-cover shadow-[0_28px_70px_-18px_rgba(12,11,10,0.3)]"
+            className="aspect-[16/10] w-full object-cover shadow-[0_28px_70px_-18px_rgba(12,11,10,0.3)]"
             style={{ objectPosition: centreFocus }}
           />
         </figure>

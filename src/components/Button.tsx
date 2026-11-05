@@ -4,6 +4,11 @@ import type { ReactNode } from "react";
 /**
  * The house button.
  *
+ * SQUARE. No border-radius, here or anywhere that uses it. This is
+ * the established Life Luxe geometry, shared with the NYE and
+ * Greece landing pages, and the reason a visitor moving between a
+ * campaign page and this site sees one hand.
+ *
  * Square, 1px border, tracked-out uppercase, and the tracking OPENS
  * on hover rather than the fill changing abruptly — the same
  * geometry used across the Life Luxe landing pages, so a visitor
@@ -15,7 +20,7 @@ import type { ReactNode } from "react";
  *   ghost  — outlined, for use over photography
  */
 
-type Variant = "solid" | "onDark" | "ghost";
+type Variant = "solid" | "onDark" | "ghost" | "quiet";
 type Size = "md" | "sm";
 
 const BASE =
@@ -36,6 +41,10 @@ const VARIANTS: Record<Variant, string> = {
     "bg-white border-white text-ink hover:bg-transparent hover:text-white",
   ghost:
     "bg-transparent border-white/60 text-white hover:bg-white hover:border-white hover:text-ink",
+  /* Secondary action on a light ground. Outlined in ink rather than
+     pink, so it never competes with the primary button beside it. */
+  quiet:
+    "bg-transparent border-ink/25 text-ink hover:bg-ink hover:border-ink hover:text-white",
 };
 
 type CommonProps = {

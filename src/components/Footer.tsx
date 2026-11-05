@@ -37,7 +37,7 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${SITE.name} on ${s.name}`}
-                      className="inline-flex size-10 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors duration-300 hover:border-brand-lift hover:text-brand-lift"
+                      className="inline-flex size-10 items-center justify-center border border-white/20 text-white/70 transition-colors duration-300 hover:border-brand-lift hover:text-brand-lift"
                     >
                       {Icon ? <Icon className="size-[18px]" /> : s.name}
                     </a>

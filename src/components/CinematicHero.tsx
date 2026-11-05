@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { useGsap } from "~/lib/motion";
+import { Button } from "./Button";
 
 /**
  * The full-bleed opener, after joinspread.app.
@@ -115,25 +116,12 @@ export function CinematicHero({
         </p>
 
         <div className="ch-fade mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-          <a
-            href={primary.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-[54px] items-center justify-center rounded-full bg-brand px-9 text-[0.9375rem] font-bold text-white no-underline transition-[background-color,transform] duration-300 ease-luxe hover:scale-[1.03] hover:bg-brand-deep"
-          >
-            {primary.label}
-          </a>
+          <Button href={primary.href}>{primary.label}</Button>
           {secondary ? (
-            <a
-              href={secondary.href}
-              className="group inline-flex min-h-[54px] items-center justify-center gap-2 rounded-full border border-white/35 px-8 text-[0.9375rem] text-white no-underline transition-colors duration-300 ease-luxe hover:border-white hover:bg-white hover:text-ink"
-            >
+            <Button href={secondary.href} variant="ghost">
               {secondary.label}
-              <ArrowUpRight
-                aria-hidden="true"
-                className="size-4 transition-transform duration-300 ease-luxe group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </a>
+              <ArrowUpRight aria-hidden="true" className="size-4" />
+            </Button>
           ) : null}
         </div>
       </div>

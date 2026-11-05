@@ -5,7 +5,7 @@ import { useGsap } from "~/lib/motion";
  * Image card beside text, alternating sides down the page — the
  * pattern Spread uses for its middle third.
  *
- * The image is a rounded card rather than a full-bleed panel, and it
+ * The image is a square-cornered card, not a full-bleed panel, and it
  * parallaxes gently against the copy. Alternating `flip` is what
  * stops six of these reading as a list.
  */
@@ -64,7 +64,7 @@ export function SplitFeature({
     <section ref={root} className="py-20 lg:py-32">
       <div className="mx-auto grid max-w-[1180px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20 lg:px-11">
         <figure
-          className={`sp-media overflow-hidden rounded-[18px] ${flip ? "lg:order-2" : ""}`}
+          className={`sp-media overflow-hidden ${flip ? "lg:order-2" : ""}`}
         >
           <img
             src={image}
