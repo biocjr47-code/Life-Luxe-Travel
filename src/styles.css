@@ -198,3 +198,31 @@ a:not([class]) {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ═══ SPREAD-STYLE MOTION ═════════════════════════════════════
+   Added for the long-scroll homepage, after joinspread.app.
+   Their curve is cubic-bezier(.16,1,.3,1) — the same exponential
+   ease-out this system already used, so nothing had to change. */
+
+/* The rotating seal in the hero. 22s, linear: a seal that eases
+   looks like it is struggling. */
+@keyframes sealSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Lenis sets this on <html> once smooth scroll is live. Without it
+   the page keeps native scrolling underneath and the two fight. */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[sealSpin_22s_linear_infinite\] { animation: none !important; }
+}
+
+/* The certification marquee. -50% because the row is duplicated. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
