@@ -136,7 +136,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             id="primary-nav"
             className={`${open ? "block" : "hidden"} basis-full border-t border-white/15 pt-2 pb-4 lg:block lg:basis-auto lg:border-0 lg:p-0`}
           >
-            <ul className="flex flex-col lg:flex-row lg:items-center lg:gap-7 xl:gap-8">
+            <ul className="flex flex-col lg:flex-row lg:items-center lg:gap-5 xl:gap-[30px]">
               {NAV.map((item) => {
                 const current =
                   item.to === "/"
@@ -147,7 +147,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
                     <Link
                       to={item.to}
                       aria-current={current ? "page" : undefined}
-                      className={`block border-b border-white/10 py-3.5 text-sm font-bold tracking-[0.1em] whitespace-nowrap uppercase no-underline transition-colors duration-200 lg:border-0 lg:py-1.5 lg:text-[0.8125rem] ${
+                      className={`block border-b border-white/10 py-3.5 text-sm font-bold tracking-[0.1em] whitespace-nowrap uppercase no-underline transition-colors duration-200 lg:border-0 lg:py-1.5 lg:text-xs lg:tracking-[0.08em] xl:text-[0.8125rem] xl:tracking-[0.11em] ${
                         current
                           ? "text-brand-lift"
                           : "text-white/90 hover:text-brand-lift"

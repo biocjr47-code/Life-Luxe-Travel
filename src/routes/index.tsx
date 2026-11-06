@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef } from "react";
 import { ArrowUpRight, Globe, Map, Quote, Users } from "lucide-react";
 import { Footer } from "~/components/Footer";
-import { PillNav } from "~/components/PillNav";
+import { Navbar } from "~/components/Navbar";
 import { CinematicHero } from "~/components/CinematicHero";
 import { ScatterField, type Satellite } from "~/components/ScatterField";
 import { SplitFeature } from "~/components/SplitFeature";
@@ -87,7 +87,11 @@ function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <PillNav />
+      {/* The house header: the two-tier contact rail + link bar from
+          landing-pages/travel-gallery-v2.html, over the hero photograph.
+          Same component the other six pages use, so the header no longer
+          changes shape when you leave the homepage. */}
+      <Navbar overlay />
 
       <main id="main" className="flex-1">
         <CinematicHero

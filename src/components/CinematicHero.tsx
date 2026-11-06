@@ -90,13 +90,17 @@ export function CinematicHero({
         className="ch-img absolute inset-0 -z-10 size-full object-cover will-change-transform"
         style={{ objectPosition: focus }}
       />
+      {/* The top stop is .26, not .44: the header carries its own
+          scrim down to roughly 215px, and two dark layers over the
+          same sky flattened the mountains to a silhouette. The foot
+          stops are unchanged — they are what the subtitle sits on. */}
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10"
         style={{
           background:
             "linear-gradient(100deg, rgb(12 11 10 / .72) 0%, rgb(12 11 10 / .40) 38%, rgb(12 11 10 / .06) 62%, rgb(12 11 10 / 0) 74%)," +
-            "linear-gradient(180deg, rgb(12 11 10 / .44) 0%, rgb(12 11 10 / .12) 28%, rgb(12 11 10 / .66) 70%, rgb(12 11 10 / .94) 100%)",
+            "linear-gradient(180deg, rgb(12 11 10 / .26) 0%, rgb(12 11 10 / .12) 28%, rgb(12 11 10 / .66) 70%, rgb(12 11 10 / .94) 100%)",
         }}
       />
 
