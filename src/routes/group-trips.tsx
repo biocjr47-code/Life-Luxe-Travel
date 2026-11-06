@@ -1,18 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  BadgeCheck,
-  Cake,
-  CalendarClock,
-  Gem,
-  Gift,
-  HandHeart,
-  Palmtree,
-  ShieldCheck,
-  Snowflake,
-  Sparkles,
-  Sun,
-} from "lucide-react";
+import { ArrowRight, Cake, Gift, Palmtree, Snowflake, Sun } from "lucide-react";
 import { Layout } from "~/components/Layout";
 import { PageHero } from "~/components/PageHero";
 import { Container } from "~/components/Container";
@@ -20,10 +7,10 @@ import { SectionHeading } from "~/components/SectionHeading";
 import { Button } from "~/components/Button";
 import { Reveal } from "~/components/Reveal";
 import { CTASection } from "~/components/CTASection";
+import { ValuePillars } from "~/components/ValuePillars";
 import { EnquiryForm } from "~/components/EnquiryForm";
 import { seo } from "~/components/Seo";
 import { CUSTOM_GETAWAYS, PAST_HIGHLIGHTS, TRIPS } from "~/data/trips";
-import { WHY_US } from "~/data/site";
 
 export const Route = createFileRoute("/group-trips")({
   head: () =>
@@ -36,15 +23,6 @@ export const Route = createFileRoute("/group-trips")({
     }),
   component: GroupTrips,
 });
-
-const WHY_ICONS = {
-  "badge-check": BadgeCheck,
-  gem: Gem,
-  "shield-check": ShieldCheck,
-  "hand-heart": HandHeart,
-  sparkles: Sparkles,
-  "calendar-clock": CalendarClock,
-} as const;
 
 const GETAWAY_ICONS = {
   cake: Cake,
@@ -175,36 +153,7 @@ function GroupTrips() {
         </Container>
       </section>
 
-      {/* ── Why us ──────────────────────────────────────────── */}
-      <section className="py-20 lg:py-28">
-        <Container>
-          <Reveal>
-            <SectionHeading title="Why travel with us" />
-          </Reveal>
-          <dl className="mt-12 grid gap-x-12 gap-y-10 sm:grid-cols-2">
-            {WHY_US.map((item, i) => {
-              const Icon = WHY_ICONS[item.icon as keyof typeof WHY_ICONS];
-              return (
-                <Reveal key={item.title} delay={(i % 2) * 80}>
-                  <div className="flex gap-4">
-                    <Icon
-                      aria-hidden="true"
-                      className="mt-1 size-5 shrink-0 text-brand"
-                      strokeWidth={1.6}
-                    />
-                    <div>
-                      <dt className="font-display text-[1.25rem] text-ink">
-                        {item.title}
-                      </dt>
-                      <dd className="measure mt-2 text-warm">{item.body}</dd>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </dl>
-        </Container>
-      </section>
+      <ValuePillars />
 
       {/* ── Past highlights ─────────────────────────────────── */}
       <section className="border-t border-rule py-16">

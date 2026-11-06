@@ -1,19 +1,25 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useRef } from "react";
-import { ArrowUpRight, Globe, Map, Quote, Users } from "lucide-react";
+import { Globe, Map, Users } from "lucide-react";
 import { Footer } from "~/components/Footer";
 import { Navbar } from "~/components/Navbar";
 import { CinematicHero } from "~/components/CinematicHero";
 import { ScatterField, type Satellite } from "~/components/ScatterField";
 import { SplitFeature } from "~/components/SplitFeature";
 import { MarqueeBand } from "~/components/MarqueeBand";
+import { StatementBand } from "~/components/StatementBand";
+import { ServiceLedger } from "~/components/ServiceLedger";
+import { SeasonCalendar } from "~/components/SeasonCalendar";
+import { ValuePillars } from "~/components/ValuePillars";
+import { DestinationIndex } from "~/components/DestinationIndex";
+import { TestimonialWall } from "~/components/TestimonialWall";
+import { JournalPreview } from "~/components/JournalPreview";
 import { Button } from "~/components/Button";
 import { GhlFormEmbed } from "~/integrations/GhlFormEmbed";
 import { seo } from "~/components/Seo";
 import { useGsap, useSmoothScroll } from "~/lib/motion";
 import { LEADCONNECTOR, SITE, STATS } from "~/data/site";
 import { TRIPS } from "~/data/trips";
-import { TESTIMONIALS } from "~/data/testimonials";
 
 export const Route = createFileRoute("/")({
   head: () => seo({ title: SITE.name, description: SITE.description, path: "/" }),
@@ -65,23 +71,6 @@ function Home() {
     [],
   );
 
-  const quoteRef = useRef<HTMLElement>(null);
-  useGsap(
-    ({ gsap, reduced }) => {
-      if (reduced) return;
-      gsap.fromTo(
-        ".q-part",
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1, y: 0, duration: 1.1, ease: "expo.out", stagger: 0.1,
-          scrollTrigger: { trigger: quoteRef.current, start: "top 78%" },
-        },
-      );
-    },
-    quoteRef,
-    [],
-  );
-
   const greece = TRIPS.find((t) => t.title.startsWith("Greece"))!;
   const nye = TRIPS.find((t) => t.title.startsWith("New Year"))!;
 
@@ -109,6 +98,8 @@ function Home() {
             edge to land on as the photograph ends. */}
         <MarqueeBand />
 
+        <StatementBand />
+
         <ScatterField
           centre={{
             // A LANDSCAPE source. The game-lodge group shot is 3:4,
@@ -129,6 +120,7 @@ function Home() {
         {/* ── Figures ──────────────────────────────────────── */}
         <section ref={statsRef} className="bg-cream py-20 lg:py-28">
           <div className="mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-11">
+            <h2 className="sr-only">Life Luxe Travel in numbers</h2>
             <ul className="grid gap-12 sm:grid-cols-3">
               {STATS.map((stat) => {
                 const Icon = STAT_ICONS[stat.icon];
@@ -149,6 +141,8 @@ function Home() {
             </ul>
           </div>
         </section>
+
+        <ServiceLedger />
 
         <SplitFeature
           heading="The Effortless Retreat Formula™"
@@ -227,27 +221,18 @@ function Home() {
           </div>
         </section>
 
-        {/* ── Testimonial ──────────────────────────────────── */}
-        <section ref={quoteRef} className="bg-ivory py-24 lg:py-32">
-          <div className="mx-auto max-w-[1180px] px-5 sm:px-8 lg:px-11">
-            <figure className="mx-auto max-w-[56rem] text-center">
-              <Quote aria-hidden="true" className="q-part mx-auto size-9 text-brand" strokeWidth={1.4} />
-              <blockquote className="q-part mt-7">
-                <p className="font-display text-[clamp(1.5rem,3.2vw,2.5rem)] leading-[1.34] tracking-[-0.018em] text-ink italic">
-                  {TESTIMONIALS[0]!.quote[0]}
-                </p>
-              </blockquote>
-              <figcaption className="q-part mt-7 text-[0.8125rem] font-bold tracking-[0.14em] text-muted uppercase">
-                {TESTIMONIALS[0]!.trip}
-              </figcaption>
-              <div className="q-part mt-9">
-                <Button to="/testimonials" variant="quiet" size="sm">
-                  Read more journeys
-                </Button>
-              </div>
-            </figure>
-          </div>
-        </section>
+        <SeasonCalendar />
+
+        <ValuePillars
+          lede="Group travel is its own discipline. These are the credentials behind it."
+          className="py-24 lg:py-32"
+        />
+
+        <DestinationIndex />
+
+        <TestimonialWall />
+
+        <JournalPreview />
 
         {/* ── Checklist opt-in ─────────────────────────────── */}
         <section className="bg-brand-wash py-24 lg:py-32">
