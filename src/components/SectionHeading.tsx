@@ -12,12 +12,15 @@ export function SectionHeading({
   lede,
   align = "left",
   tone = "light",
+  voice = false,
   as: Tag = "h2",
 }: {
   title: ReactNode;
   lede?: ReactNode;
   align?: "left" | "center";
   tone?: "light" | "dark";
+  /** Italic, for the headings that speak rather than label. */
+  voice?: boolean;
   as?: "h1" | "h2";
 }) {
   const centred = align === "center";
@@ -30,7 +33,7 @@ export function SectionHeading({
         } mb-7`}
       />
       <Tag
-        className={`text-title ${
+        className={`text-title ${voice ? "italic" : ""} ${
           tone === "dark" ? "text-white" : "text-ink"
         }`}
       >

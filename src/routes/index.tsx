@@ -15,6 +15,7 @@ import { DestinationIndex } from "~/components/DestinationIndex";
 import { TestimonialWall } from "~/components/TestimonialWall";
 import { JournalPreview } from "~/components/JournalPreview";
 import { Button } from "~/components/Button";
+import { CTASection } from "~/components/CTASection";
 import { GhlFormEmbed } from "~/integrations/GhlFormEmbed";
 import { seo } from "~/components/Seo";
 import { useGsap, useSmoothScroll } from "~/lib/motion";
@@ -254,27 +255,11 @@ function Home() {
           </div>
         </section>
 
-        {/* ── Close ────────────────────────────────────────── */}
-        <section className="bg-ink py-24 text-center lg:py-32">
-          <div className="mx-auto max-w-[46rem] px-5 sm:px-8">
-            <h2 className="font-display text-[clamp(2rem,4.4vw,3.5rem)] leading-[1.06] tracking-[-0.025em] text-white italic">
-              Let&apos;s plan your group&apos;s journey
-            </h2>
-            <p className="mx-auto mt-6 max-w-[48ch] text-[1.0625rem] leading-relaxed text-white/75">
-              Tell us who is travelling and what the trip is for. We will come
-              back with a shape for it — destinations, timing, and what it
-              would take to run.
-            </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-              <Button href={LEADCONNECTOR.bookingWidget} variant="onDark">
-                Book a consultation
-              </Button>
-              <Button to="/gallery" variant="ghost">
-                See the gallery
-              </Button>
-            </div>
-          </div>
-        </section>
+        {/* The shared closing ask. This used to be a hand-written
+            copy of CTASection with the same title, lede and buttons,
+            which meant any change to the ending had to be made in two
+            places and had already drifted (no rule mark here). */}
+        <CTASection secondary={{ label: "See the gallery", to: "/gallery" }} />
       </main>
 
       <Footer />
