@@ -103,6 +103,12 @@ function Home() {
           secondary={{ label: "See the 2027 calendar", href: "/group-trips" }}
         />
 
+        {/* The accreditations sit directly under the hero: the first
+            thing after the promise should be the evidence for it.
+            Ivory against the dark hero also gives the eye a hard
+            edge to land on as the photograph ends. */}
+        <MarqueeBand />
+
         <ScatterField
           centre={{
             // A LANDSCAPE source. The game-lodge group shot is 3:4,
@@ -119,8 +125,6 @@ function Home() {
           heading="One hundred trips. Thirty-four countries. Not one of them planned by you."
           lede="Every photograph on this page was taken on a Life Luxe journey, by the people who were there. No stock, no staging — just what the trips actually look like."
         />
-
-        <MarqueeBand />
 
         {/* ── Figures ──────────────────────────────────────── */}
         <section ref={statsRef} className="bg-cream py-20 lg:py-28">

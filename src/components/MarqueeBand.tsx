@@ -31,7 +31,13 @@ export function MarqueeBand() {
     <section className="border-y border-rule bg-ivory py-10 lg:py-12">
       <h2 className="sr-only">Travel professional certifications</h2>
       <div className="group relative flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
-        <div className="flex animate-[marquee_38s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+        {/* bg-ivory here, not only on the section. The marquee is
+            animated, so its transform makes it a stacking context —
+            and mix-blend-multiply on the badges blends against THAT
+            group, not the page behind it. Without a ground inside the
+            group the white JPEG backgrounds stay white and every badge
+            sits on a visible card. */}
+        <div className="flex animate-[marquee_38s_linear_infinite] bg-ivory group-hover:[animation-play-state:paused] motion-reduce:animate-none">
           {row(false)}
           {row(true)}
         </div>
