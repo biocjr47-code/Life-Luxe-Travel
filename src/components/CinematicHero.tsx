@@ -176,7 +176,13 @@ export function CinematicHero({
                the mark almost fills it and leaves a hair of air. */
             width={80}
             height={80}
-            className="size-20 object-contain opacity-85 [filter:grayscale(1)_contrast(1.05)]"
+            /* A REAL KNOCKOUT, WITHOUT A NEW ASSET. The artwork has
+               a white disc baked in. invert turns that disc black
+               and the marks light; screen then renders black as
+               nothing and light as white. The disc disappears and
+               the mark survives in white — which is what a knockout
+               PNG would have given us. */
+            className="size-20 object-contain opacity-90 mix-blend-screen [filter:grayscale(1)_invert(1)_contrast(1.15)]"
           />
         </span>
       </div>

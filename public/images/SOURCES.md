@@ -23,9 +23,15 @@ DESTINATION — they are never presented as a Life Luxe trip.
 | `dest-rio.jpg` | Rio de Janeiro — Sep 2028 | https://www.pexels.com/photo/aerial-view-of-rio-de-janeiro-7079778/ |
 | `dest-ghana.jpg` | Ghana — 2029 | https://www.pexels.com/photo/facade-of-elmina-castle-14780914/ |
 
-`nye-2027-ship-fireworks.jpg` is also Pexels, carried over from the
-NYE 2027 campaign page — see `landing-pages/images-nye2027/SOURCES.md`
-for that set.
+## The NYE 2027 band
+
+`nye-2027-brilliant-lady.png` is Terry's own campaign asset — the
+hero from lifeluxetravel.com/nye-2027-cruise, pulled from the GHL
+media library (`brilliant-lady-luxury-realistic-hero.png`). It shows
+Virgin Voyages' Brilliant Lady against the Miami skyline. Its file
+name says "realistic", so treat it as a rendered or composited
+promotional image rather than a documentary photograph; it is not
+presented as a Life Luxe journey.
 
 **If a real photograph of any of these trips arrives, replace the
 stock with it.** The `dest-` prefix exists so these are easy to find.

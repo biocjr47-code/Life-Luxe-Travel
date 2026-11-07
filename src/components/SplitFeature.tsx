@@ -77,7 +77,7 @@ export function SplitFeature({
       <div className="mx-auto grid max-w-[1180px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20 lg:px-11">
         {media === "portrait" ? (
           <figure className={`sp-media ${flip ? "lg:order-2" : ""}`}>
-            <div className="relative isolate w-full max-w-[340px]">
+            <div className="relative isolate w-full max-w-[420px]">
               {/* An offset plate, square like everything else, so
                   the portrait sits ON something instead of floating
                   in the column. */}

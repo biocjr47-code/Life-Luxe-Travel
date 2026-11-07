@@ -166,8 +166,8 @@ function Home() {
         {/* ── Full-bleed band ──────────────────────────────── */}
         <section className="relative isolate flex min-h-[72svh] items-end overflow-hidden">
           <img
-            src="/images/nye-2027-ship-fireworks.jpg"
-            alt="A cruise ship lit up at night under fireworks"
+            src="/images/nye-2027-brilliant-lady.png"
+            alt="Virgin Voyages' Brilliant Lady sailing past the lit Miami skyline under fireworks"
             loading="lazy"
             decoding="async"
             className="absolute inset-0 -z-10 size-full object-cover"
