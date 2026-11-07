@@ -1,5 +1,6 @@
 import { Reveal } from "./Reveal";
 import { Container } from "./Container";
+import { LedgerPattern } from "./LedgerPattern";
 
 /**
  * What is actually handled, itemised.
@@ -60,8 +61,9 @@ const WORK = [
 
 export function ServiceLedger() {
   return (
-    <section className="border-y border-rule bg-white py-24 lg:py-32">
-      <Container>
+    <section className="relative isolate overflow-hidden border-y border-rule bg-white py-24 lg:py-32">
+      <LedgerPattern />
+      <Container className="relative">
         <Reveal>
           <hr aria-hidden="true" className="rule-mark mb-7" />
           <h2 className="max-w-[18ch] font-display text-[clamp(2rem,4.2vw,3.25rem)] leading-[1.07] tracking-[-0.025em] text-ink italic">

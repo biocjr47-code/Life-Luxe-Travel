@@ -32,12 +32,9 @@ export const TRIPS: Trip[] = [
     blurb:
       "Sun-washed villages cascading into the Aegean, white-and-blue architecture at golden hour, and ancient history blended with effortless luxury. Timeless ruins, a sail between the islands, and sunset dinners perched above the sea in Santorini.",
     status: "open",
-    image: "/images/terry-santorini.jpg",
+    image: "/images/dest-greece.jpg",
     imageAlt:
-      "Terry Powell in a flowing blue gown above the Santorini caldera, a blue-domed church and white bell tower behind her",
-    // A portrait source in a 4/3 frame crops from the middle, which
-    // takes her raised arm off.
-    imageFocus: "center 34%",
+      "Oia on Santorini at dusk — blue-domed churches and whitewashed houses stepping down the caldera cliff above the sea",
     href: "https://lifeluxetravel.com/greece2027",
   },
   {
@@ -108,7 +105,7 @@ export const TRIPS: Trip[] = [
     status: "open",
     image: "/images/dest-ghana.jpg",
     imageAlt:
-      "Hands at a traditional loom weaving kente cloth in Ghana, teal and white threads under tension",
+      "A busy street in Accra, Ghana — families and traders walking between market stalls in bright sunlight",
   },
 ];
 

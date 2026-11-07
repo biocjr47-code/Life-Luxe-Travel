@@ -18,10 +18,11 @@ DESTINATION — they are never presented as a Life Luxe trip.
 
 | File | Destination | Source |
 |---|---|---|
+| `dest-greece.jpg` | Greece — May 2027 | https://www.pexels.com/photo/caldera-seen-from-santorini-17919743/ |
 | `dest-austin.jpg` | Austin, Texas — 2027 | https://www.pexels.com/photo/skyscrapers-over-river-in-austin-in-texas-25003745/ |
 | `dest-australia.jpg` | Australia — Jan 2028 | https://www.pexels.com/photo/exterior-of-sydney-opera-house-in-late-evening-5707610/ |
 | `dest-rio.jpg` | Rio de Janeiro — Sep 2028 | https://www.pexels.com/photo/aerial-view-of-rio-de-janeiro-7079778/ |
-| `dest-ghana.jpg` | Ghana — 2029 | Wikimedia Commons, "Kente weave 02" by Ibn Dagara, **CC BY-SA 4.0** — https://commons.wikimedia.org/wiki/File:Kente_weave_02.jpg |
+| `dest-ghana.jpg` | Ghana — 2029 | https://www.pexels.com/photo/a-people-walking-on-the-street-13699256/ |
 
 ## The NYE 2027 campaign images
 
@@ -47,11 +48,9 @@ presented as a Life Luxe journey.
 **If a real photograph of any of these trips arrives, replace the
 stock with it.** The `dest-` prefix exists so these are easy to find.
 
-### Attribution note — read before launch
+### Attribution
 
-The Pexels files need no credit. **`dest-ghana.jpg` does.** It is
-CC BY-SA 4.0, which requires visible attribution to Ibn Dagara and a
-link to the licence wherever it appears. A line in this file is not
-enough on its own — add a credits page, or a small caption, or swap
-it for a Pexels/Unsplash equivalent that carries no such condition.
-Flagged rather than quietly shipped.
+Every file in the table above is Pexels, which requires no credit.
+A Wikimedia Commons image was used for Ghana briefly and then
+replaced, because CC BY-SA would have required a visible credit line
+on the page. If a Commons image is ever added back, it needs one.
