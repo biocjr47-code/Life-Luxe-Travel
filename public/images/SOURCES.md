@@ -54,3 +54,9 @@ Every file in the table above is Pexels, which requires no credit.
 A Wikimedia Commons image was used for Ghana briefly and then
 replaced, because CC BY-SA would have required a visible credit line
 on the page. If a Commons image is ever added back, it needs one.
+
+## Section backgrounds
+
+| File | Where | Source |
+|---|---|---|
+| `dest-travellers.jpg` | "Or somewhere else entirely" band | https://www.pexels.com/photo/silhouette-of-person-in-airport-227690/ |
