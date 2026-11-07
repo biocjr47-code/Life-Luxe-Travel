@@ -15,9 +15,19 @@ import { TESTIMONIALS } from "~/data/testimonials";
  *
  * Ruled columns rather than boxed cards. Three identical boxes make
  * real praise look like placeholder text; three ruled columns read
- * as a page of a magazine. Only the first paragraph of each is shown
- * — the full accounts are a click away and nothing is reworded to
- * fit.
+ * as a page of a magazine.
+ *
+ * TWO PARAGRAPHS, NOT ONE. Barbara's account opens "The trip to
+ * Dubai was amazing!" and nothing else, so a one-paragraph preview
+ * gave her column a single line against four in the others — it
+ * read as missing copy rather than as a short quote. The second
+ * paragraph is where each of these actually says something.
+ *
+ * The quote block carries a min-height so the three captions start
+ * on the same line, and the trip label reserves two lines because
+ * Greece and South Africa wrap and the Emirates does not. Without
+ * both, the names and portraits stepped up and down across the row.
+ * Nothing is reworded to fit; the full accounts are a click away.
  *
  * THESE ARE THE GUESTS. The live site's "Happy Travelers" section
  * publishes a first name, a home city and a portrait for each one,
@@ -58,10 +68,12 @@ export function TestimonialWall() {
                 <h3 className="mt-4 font-display text-[1.3125rem] leading-snug text-ink italic">
                   {t.heading}
                 </h3>
-                <blockquote className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-warm">
-                  <p>{t.quote[0]}</p>
+                <blockquote className="mt-3 flex-1 space-y-3 text-[0.9375rem] leading-relaxed text-warm sm:min-h-[11.5rem] lg:min-h-[10.5rem]">
+                  {t.quote.slice(0, 2).map((p) => (
+                    <p key={p.slice(0, 24)}>{p}</p>
+                  ))}
                 </blockquote>
-                <figcaption className="mt-6 flex items-center gap-3.5">
+                <figcaption className="mt-6 flex items-start gap-3.5">
                   <img
                     src={t.avatar}
                     alt={t.avatarAlt}
@@ -76,7 +88,7 @@ export function TestimonialWall() {
                     <span className="mt-0.5 block text-[0.8125rem] text-muted">
                       {t.location}
                     </span>
-                    <span className="mt-1 block text-[0.6875rem] font-bold tracking-[0.12em] text-brand-deep uppercase">
+                    <span className="mt-1.5 block text-[0.6875rem] leading-[1.45] font-bold tracking-[0.12em] text-brand-deep uppercase lg:min-h-[2rem]">
                       {t.trip}
                     </span>
                   </span>
