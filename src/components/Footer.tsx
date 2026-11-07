@@ -31,9 +31,9 @@ export function Footer() {
             <img
               src="/images/llt-logo.png"
               alt=""
-              width={96}
-              height={96}
-              className="size-[88px] object-contain"
+              width={132}
+              height={132}
+              className="size-[112px] object-contain lg:size-[132px]"
             />
             <p className="measure mt-6 text-[0.9375rem] leading-relaxed text-white/70">
               {SITE.tagline} We partner with group leaders who want to bring

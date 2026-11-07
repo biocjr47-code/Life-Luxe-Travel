@@ -201,7 +201,7 @@ function Home() {
               {nye.blurb}
             </p>
             <div className="mt-9">
-              <Button href={nye.href!} variant="onDark">
+              <Button href={nye.href!} variant="accent">
                 See the sailing
               </Button>
             </div>

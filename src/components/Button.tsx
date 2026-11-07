@@ -16,11 +16,15 @@ import type { ReactNode } from "react";
  *
  * Variants exist because a single fill cannot survive every ground:
  *   solid  — pink on light surfaces
- *   onDark — white on ink; pink would fail contrast there
+ *   accent — pink over photography or ink. Same fill as solid, but
+ *            it empties to WHITE rather than to brand-deep: that
+ *            pink is 5.8:1 on ivory and nowhere near it on a dark
+ *            ground, so the light variant's hover cannot be reused.
+ *   onDark — white on ink
  *   ghost  — outlined, for use over photography
  */
 
-type Variant = "solid" | "onDark" | "ghost" | "quiet";
+type Variant = "solid" | "accent" | "onDark" | "ghost" | "quiet";
 type Size = "md" | "sm";
 
 const BASE =
@@ -37,6 +41,8 @@ const SIZES: Record<Size, string> = {
 const VARIANTS: Record<Variant, string> = {
   solid:
     "bg-brand border-brand text-white hover:bg-transparent hover:text-brand-deep",
+  accent:
+    "bg-brand border-brand text-white hover:bg-transparent hover:text-white",
   onDark:
     "bg-white border-white text-ink hover:bg-transparent hover:text-white",
   ghost:

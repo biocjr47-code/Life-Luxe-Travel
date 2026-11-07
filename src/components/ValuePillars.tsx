@@ -9,6 +9,7 @@ import {
 import { Reveal } from "./Reveal";
 import { Container } from "./Container";
 import { SectionHeading } from "./SectionHeading";
+import { PillarsPattern } from "./PillarsPattern";
 import { WHY_US } from "~/data/site";
 
 /**
@@ -41,8 +42,9 @@ export function ValuePillars({
   className?: string;
 }) {
   return (
-    <section className={className}>
-      <Container>
+    <section className={`relative isolate overflow-hidden ${className}`}>
+      <PillarsPattern />
+      <Container className="relative">
         <Reveal>
           <SectionHeading title={title} lede={lede} />
         </Reveal>

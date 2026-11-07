@@ -83,6 +83,11 @@ export function SeasonCalendar() {
                               loading="lazy"
                               decoding="async"
                               className="aspect-[4/3] w-full object-cover transition-transform duration-[1100ms] ease-luxe group-hover:scale-[1.05]"
+                              style={
+                                trip.imageFocus
+                                  ? { objectPosition: trip.imageFocus }
+                                  : undefined
+                              }
                             />
                           </figure>
                         ) : null}

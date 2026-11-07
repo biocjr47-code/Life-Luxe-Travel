@@ -21,7 +21,18 @@ DESTINATION — they are never presented as a Life Luxe trip.
 | `dest-austin.jpg` | Austin, Texas — 2027 | https://www.pexels.com/photo/skyscrapers-over-river-in-austin-in-texas-25003745/ |
 | `dest-australia.jpg` | Australia — Jan 2028 | https://www.pexels.com/photo/exterior-of-sydney-opera-house-in-late-evening-5707610/ |
 | `dest-rio.jpg` | Rio de Janeiro — Sep 2028 | https://www.pexels.com/photo/aerial-view-of-rio-de-janeiro-7079778/ |
-| `dest-ghana.jpg` | Ghana — 2029 | https://www.pexels.com/photo/facade-of-elmina-castle-14780914/ |
+| `dest-ghana.jpg` | Ghana — 2029 | Wikimedia Commons, "Kente weave 02" by Ibn Dagara, **CC BY-SA 4.0** — https://commons.wikimedia.org/wiki/File:Kente_weave_02.jpg |
+
+## The NYE 2027 campaign images
+
+`nye-2027-dress-up.png` is the "Dress up. Show up. Celebrate." image
+from the same campaign (`virgin-voyages-friends-no-fireworks.png`).
+Like the hero, it is a rendered promotional image of models — the
+folder it came from also holds `Gemini_Generated_Image_*` files — not
+a photograph of a Life Luxe group. It is used to set the tone of a
+sailing that has not happened yet, and it is never captioned as a
+Life Luxe journey. Replace it with a real photograph from the 2027
+voyage once there is one.
 
 ## The NYE 2027 band
 
@@ -35,3 +46,12 @@ presented as a Life Luxe journey.
 
 **If a real photograph of any of these trips arrives, replace the
 stock with it.** The `dest-` prefix exists so these are easy to find.
+
+### Attribution note — read before launch
+
+The Pexels files need no credit. **`dest-ghana.jpg` does.** It is
+CC BY-SA 4.0, which requires visible attribution to Ibn Dagara and a
+link to the licence wherever it appears. A line in this file is not
+enough on its own — add a credits page, or a small caption, or swap
+it for a Pexels/Unsplash equivalent that carries no such condition.
+Flagged rather than quietly shipped.

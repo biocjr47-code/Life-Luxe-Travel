@@ -18,6 +18,8 @@ export type Trip = {
   status: TripStatus;
   image?: string;
   imageAlt?: string;
+  /** object-position, for a source whose subject is off-centre. */
+  imageFocus?: string;
   href?: string;
 };
 
@@ -30,9 +32,12 @@ export const TRIPS: Trip[] = [
     blurb:
       "Sun-washed villages cascading into the Aegean, white-and-blue architecture at golden hour, and ancient history blended with effortless luxury. Timeless ruins, a sail between the islands, and sunset dinners perched above the sea in Santorini.",
     status: "open",
-    image: "/images/greece-caldera.jpg",
+    image: "/images/terry-santorini.jpg",
     imageAlt:
-      "The Santorini caldera at golden hour, whitewashed buildings along the cliff edge",
+      "Terry Powell in a flowing blue gown above the Santorini caldera, a blue-domed church and white bell tower behind her",
+    // A portrait source in a 4/3 frame crops from the middle, which
+    // takes her raised arm off.
+    imageFocus: "center 34%",
     href: "https://lifeluxetravel.com/greece2027",
   },
   {
@@ -43,8 +48,9 @@ export const TRIPS: Trip[] = [
     blurb:
       "A New Year's Eve sailing out of Miami. Terry hosted this voyage herself last season, which is the only reason it is on the calendar again.",
     status: "open",
-    image: "/images/nye-vv-2026-cozumel.jpg",
-    imageAlt: "The Virgin Voyages ship alongside the pier at Cozumel",
+    image: "/images/nye-2027-dress-up.png",
+    imageAlt:
+      "Five guests in evening dress raising champagne on a Virgin Voyages deck at dusk, the ship's red funnel behind them",
     href: "https://lifeluxetravel.com/nye-2027-cruise",
   },
   {
@@ -102,7 +108,7 @@ export const TRIPS: Trip[] = [
     status: "open",
     image: "/images/dest-ghana.jpg",
     imageAlt:
-      "The whitewashed archway of Elmina Castle on the Ghanaian coast, framing fishing boats on the water beyond",
+      "Hands at a traditional loom weaving kente cloth in Ghana, teal and white threads under tension",
   },
 ];
 
