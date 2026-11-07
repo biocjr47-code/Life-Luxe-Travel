@@ -145,7 +145,15 @@ export function CinematicHero({
           heading. It sits on the hero photograph and needs no plate
           behind it; pinning it to the viewport meant giving it an
           ink disc to survive the light sections, which made it a
-          badge rather than part of the picture. */}
+          badge rather than part of the picture.
+
+          The mark is shown PLAIN — no filter, no blend mode. It was
+          running through grayscale+invert with mix-blend-screen to
+          knock the white disc out, but this sits inside an element
+          GSAP animates, and that stacking context isolates the
+          blend: the inverted black disc never dropped out, so the
+          logo wore a black plate. The artwork is a white disc
+          already. */}
       <div
         aria-hidden="true"
         className="ch-fade pointer-events-none absolute right-8 bottom-24 hidden size-[132px] lg:block"
@@ -171,7 +179,7 @@ export function CinematicHero({
             alt=""
             width={80}
             height={80}
-            className="size-20 object-contain opacity-90 mix-blend-screen [filter:grayscale(1)_invert(1)_contrast(1.15)]"
+            className="size-20 object-contain opacity-95"
           />
         </span>
       </div>

@@ -1,20 +1,36 @@
 import { useEffect, useRef, useState } from "react";
-import { Calendar, ChevronRight, Mail, MessageCircle, Phone, X } from "lucide-react";
+import {
+  Calendar,
+  ChevronRight,
+  Mail,
+  MessageCircle,
+  Phone,
+  Send,
+  X,
+} from "lucide-react";
 import { InstagramIcon } from "./BrandIcons";
 import { LEADCONNECTOR, SITE } from "~/data/site";
 
 /**
  * The floating contact card, pinned bottom-right on every page.
  *
- * IT IS NOT A CHAT INTEGRATION, and does not pretend to be. No chat
- * provider is configured on this site, so rather than draw a
- * message box that sends nothing, it offers the ways Terry can
- * actually be reached today. The greeting is a prompt, not a
- * conversation, and there is no input field implying someone is
- * waiting at the other end.
+ * IT IS NOT A LIVE CHAT, and does not pretend to be. There is no
+ * agent at the other end and nothing here suggests one — no typing
+ * indicator, no "online now", no response-time claim.
  *
- * No response-time claim either — "usually replies in minutes" is
- * the standard flourish here and there is nothing to support it.
+ * NO EMAIL FIELD. The composer hands the message to the visitor's
+ * own mail client with the body already filled in, so their address
+ * comes from the account they send it from. Asking them to type it
+ * a second time added a field, added a validation state, and pushed
+ * the card past the height of the window.
+ *
+ * That also means there is nothing to post and nothing to configure
+ * — no server route, no CRM credentials, no silent failure mode
+ * where a message is accepted and quietly dropped.
+ *
+ * NO SCROLL. The card is sized to fit inside a short window on its
+ * own; if anything is added to it, check that again rather than
+ * reaching for overflow-y-auto.
  *
  * IF THE GOHIGHLEVEL CHAT WIDGET IS ADDED, its script injects its
  * own bubble into this same corner. Remove this component then, or
@@ -61,6 +77,7 @@ const ACTIONS = [
 
 export function ContactBubble() {
   const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
   const wrap = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -76,6 +93,18 @@ export function ContactBubble() {
       document.removeEventListener("mousedown", onDown);
     };
   }, [open]);
+
+  function onSend(e: React.FormEvent) {
+    e.preventDefault();
+    const body = message.trim();
+    if (!body) return;
+    // encodeURIComponent, not encodeURI: an ampersand or a hash in
+    // someone's message would otherwise truncate the mail body.
+    window.location.href =
+      `mailto:${SITE.email}` +
+      `?subject=${encodeURIComponent("Website enquiry")}` +
+      `&body=${encodeURIComponent(body)}`;
+  }
 
   return (
     <div
@@ -108,13 +137,13 @@ export function ContactBubble() {
 
         {/* ── The greeting, as an incoming bubble ─────── */}
         <div className="px-5 pt-5">
-          <p className="relative inline-block max-w-[17rem] rounded-2xl rounded-bl-md bg-brand-wash px-4 py-3 text-[0.875rem] leading-relaxed text-ink">
+          <p className="inline-block max-w-[17rem] rounded-2xl rounded-bl-md bg-brand-wash px-4 py-3 text-[0.875rem] leading-relaxed text-ink">
             Hello — how would you like to reach us?
           </p>
         </div>
 
         {/* ── The ways through ────────────────────────── */}
-        <ul className="px-3 pt-3 pb-4">
+        <ul className="px-3 pt-3">
           {ACTIONS.map((a) => {
             const Icon = a.icon;
             return (
@@ -124,7 +153,7 @@ export function ContactBubble() {
                   {...(a.external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="group flex min-h-14 items-center gap-3.5 rounded-2xl px-3 no-underline transition-colors duration-200 hover:bg-brand-wash"
+                  className="group flex min-h-13 items-center gap-3.5 rounded-2xl px-3 py-1.5 no-underline transition-colors duration-200 hover:bg-brand-wash"
                 >
                   <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-wash text-brand-deep transition-colors duration-200 group-hover:bg-brand group-hover:text-white">
                     <Icon aria-hidden="true" className="size-[17px]" />
@@ -146,6 +175,37 @@ export function ContactBubble() {
             );
           })}
         </ul>
+
+        {/* ── The composer ────────────────────────────── */}
+        <form
+          onSubmit={onSend}
+          className="mt-3 border-t border-rule px-5 pt-4 pb-5"
+        >
+          <label htmlFor="cb-message" className="sr-only">
+            Write a message to Life Luxe Travel
+          </label>
+          <div className="flex items-end gap-2">
+            <textarea
+              id="cb-message"
+              rows={1}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Write a message…"
+              className="max-h-28 min-h-11 w-full resize-y rounded-2xl border border-rule bg-white px-4 py-2.5 text-[0.875rem] text-ink transition-colors duration-200 placeholder:text-muted/70 focus:border-brand focus:outline-none"
+            />
+            <button
+              type="submit"
+              disabled={!message.trim()}
+              aria-label="Send message"
+              className="flex size-11 shrink-0 items-center justify-center rounded-full bg-brand text-white transition-[background-color,opacity] duration-200 hover:bg-brand-deep disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              <Send aria-hidden="true" className="size-4" />
+            </button>
+          </div>
+          <p className="mt-2 text-[0.75rem] leading-relaxed text-muted">
+            Opens in your mail app, addressed to {SITE.email}.
+          </p>
+        </form>
       </div>
 
       {/* ── The launcher ──────────────────────────────── */}
@@ -158,7 +218,7 @@ export function ContactBubble() {
         className="flex size-14 items-center justify-center rounded-full bg-brand text-white shadow-[0_10px_30px_-8px_rgba(209,41,106,0.7)] transition-[transform,background-color] duration-300 ease-luxe hover:scale-105 hover:bg-brand-deep"
       >
         {open ? (
-          <X aria-hidden="true" className="size-6" strokeWidth={1.75} />
+          <X aria-hidden="true" className="size-[18px]" strokeWidth={2} />
         ) : (
           <MessageCircle aria-hidden="true" className="size-6" strokeWidth={1.75} />
         )}
