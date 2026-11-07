@@ -1,5 +1,5 @@
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
-import { FloatingSeal } from "~/components/FloatingSeal";
+import { ContactBubble } from "~/components/ContactBubble";
 import type { ReactNode } from "react";
 import appCss from "~/styles.css?url";
 import { SITE } from "~/data/site";
@@ -50,10 +50,10 @@ function RootDocument({ children }: { children: ReactNode }) {
           Skip to content
         </a>
         {children}
-        {/* Pinned to the viewport, so it is present on every page and
-            at every scroll position. Lives in the shell rather than
-            in Layout because the homepage composes its own chrome. */}
-        <FloatingSeal />
+        {/* Pinned bottom-right on every page. Lives in the shell
+            rather than in Layout because the homepage composes its
+            own chrome. */}
+        <ContactBubble />
         <Scripts />
       </body>
     </html>

@@ -10,8 +10,7 @@ import { Button } from "./Button";
  *  · the photograph fills the viewport and the type sits inside it
  *  · the headline is very large, very tight, and breaks across lines
  *    the designer chose, not the browser
- *  · a slow rotating seal — now lifted out to FloatingSeal, which
- *    pins it to the viewport so it travels with the reader
+ *  · a slow rotating seal anchors the empty bottom-right corner
  *
  * The Life Luxe parts: Playfair italic instead of a geometric sans,
  * and the pink carried in the primary pill and the subtitle.
@@ -28,6 +27,7 @@ export function CinematicHero({
   focus = "30% 42%",
   primary,
   secondary,
+  sealText = "LIFE LUXE TRAVEL · EFFORTLESS GROUP TRIPS · ",
 }: {
   /** Pre-broken headline lines. Authored breaks, not reflow. */
   lines: string[];
@@ -37,6 +37,7 @@ export function CinematicHero({
   focus?: string;
   primary: { label: string; href: string };
   secondary?: { label: string; href: string };
+  sealText?: string;
 }) {
   const root = useRef<HTMLElement>(null);
 
@@ -138,6 +139,42 @@ export function CinematicHero({
         </div>
       </div>
 
+
+      {/* The rotating seal. Decorative, so it is hidden from
+          assistive tech — the words in it are already in the page
+          heading. It sits on the hero photograph and needs no plate
+          behind it; pinning it to the viewport meant giving it an
+          ink disc to survive the light sections, which made it a
+          badge rather than part of the picture. */}
+      <div
+        aria-hidden="true"
+        className="ch-fade pointer-events-none absolute right-8 bottom-24 hidden size-[132px] lg:block"
+      >
+        <svg viewBox="0 0 132 132" className="size-full animate-[sealSpin_22s_linear_infinite]">
+          <defs>
+            <path
+              id="sealPath"
+              d="M66,66 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"
+              fill="none"
+            />
+          </defs>
+          <text
+            className="fill-white/75"
+            style={{ fontSize: 10, letterSpacing: "0.22em", fontWeight: 700 }}
+          >
+            <textPath href="#sealPath">{sealText}</textPath>
+          </text>
+        </svg>
+        <span className="absolute inset-0 flex items-center justify-center">
+          <img
+            src="/images/llt-logo.png"
+            alt=""
+            width={80}
+            height={80}
+            className="size-20 object-contain opacity-90 mix-blend-screen [filter:grayscale(1)_invert(1)_contrast(1.15)]"
+          />
+        </span>
+      </div>
     </section>
   );
 }
