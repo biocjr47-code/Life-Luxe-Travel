@@ -1,4 +1,5 @@
-import { Quote } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, Quote } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { Container } from "./Container";
 import { SectionHeading } from "./SectionHeading";
@@ -17,17 +18,21 @@ import { TESTIMONIALS } from "~/data/testimonials";
  * real praise look like placeholder text; three ruled columns read
  * as a page of a magazine.
  *
- * TWO PARAGRAPHS, NOT ONE. Barbara's account opens "The trip to
- * Dubai was amazing!" and nothing else, so a one-paragraph preview
- * gave her column a single line against four in the others — it
- * read as missing copy rather than as a short quote. The second
- * paragraph is where each of these actually says something.
+ * EQUAL EXCERPTS, NOT EQUAL BOXES. These three accounts are very
+ * different lengths — Florence writes four sentences about Santorini
+ * where Barbara opens with six words. Showing whole paragraphs made
+ * the columns ragged; forcing a min-height on them fixed the ragged
+ * captions by leaving a block of dead white space above each short
+ * one, which was worse.
  *
- * The quote block carries a min-height so the three captions start
- * on the same line, and the trip label reserves two lines because
- * Greece and South Africa wrap and the Emirates does not. Without
- * both, the names and portraits stepped up and down across the row.
- * Nothing is reworded to fit; the full accounts are a click away.
+ * So every card shows the same number of characters, cut from the
+ * full account at a word boundary, and says so with a link to the
+ * rest. Nothing is reworded and nothing is padded: the cut is
+ * mechanical and the whole thing is one click away.
+ *
+ * The trip label still reserves two lines, because Greece and South
+ * Africa wrap where the Emirates does not and the portraits would
+ * otherwise sit at three different heights.
  *
  * THESE ARE THE GUESTS. The live site's "Happy Travelers" section
  * publishes a first name, a home city and a portrait for each one,
@@ -43,6 +48,29 @@ import { TESTIMONIALS } from "~/data/testimonials";
  * The source files are pre-cropped circles with white or black
  * corners, so a square frame would show those corners anyway.
  */
+/**
+ * The same character budget for every card, cut at a word boundary
+ * so no excerpt ends mid-word. Punctuation left dangling by the cut
+ * is trimmed before the ellipsis.
+ */
+const EXCERPT = 188;
+
+function excerpt(paragraphs: string[]) {
+  const full = paragraphs.join(" ");
+  if (full.length <= EXCERPT) return { text: full, cut: false };
+  const head = full.slice(0, EXCERPT);
+  const space = head.lastIndexOf(" ");
+  // \s, NOT s. Written through a shell heredoc this lost its
+  // backslash once already and quietly stripped a trailing letter
+  // "s" instead of whitespace — "Our next stop was" came out as
+  // "Our next stop wa…".
+  const body = (space > 0 ? head.slice(0, space) : head).replace(
+    /[\s,;:.!?—–-]+$/u,
+    "",
+  );
+  return { text: `${body}…`, cut: true };
+}
+
 export function TestimonialWall() {
   return (
     <section className="bg-white py-20 lg:py-24">
@@ -68,10 +96,20 @@ export function TestimonialWall() {
                 <h3 className="mt-4 font-display text-[1.3125rem] leading-snug text-ink italic">
                   {t.heading}
                 </h3>
-                <blockquote className="mt-3 flex-1 space-y-3 text-[0.9375rem] leading-relaxed text-warm sm:min-h-[11.5rem] lg:min-h-[10.5rem]">
-                  {t.quote.slice(0, 2).map((p) => (
-                    <p key={p.slice(0, 24)}>{p}</p>
-                  ))}
+                <blockquote className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-warm">
+                  <p>{excerpt(t.quote).text}</p>
+                  {excerpt(t.quote).cut ? (
+                    <Link
+                      to="/testimonials"
+                      className="group/more mt-3 inline-flex items-center gap-1.5 text-[0.8125rem] font-bold tracking-[0.08em] text-brand-deep no-underline"
+                    >
+                      Read {t.name}&apos;s story
+                      <ArrowRight
+                        aria-hidden="true"
+                        className="size-3.5 transition-transform duration-300 ease-luxe group-hover/more:translate-x-0.5"
+                      />
+                    </Link>
+                  ) : null}
                 </blockquote>
                 <figcaption className="mt-6 flex items-start gap-3.5">
                   <img

@@ -1,5 +1,6 @@
 import { Reveal } from "./Reveal";
 import { Container } from "./Container";
+import { StatementPattern } from "./StatementPattern";
 
 /**
  * The positioning statement, directly after the accreditations.
@@ -14,8 +15,9 @@ import { Container } from "./Container";
  */
 export function StatementBand() {
   return (
-    <section className="bg-white py-24 lg:py-36">
-      <Container>
+    <section className="relative isolate overflow-clip bg-white py-24 lg:py-36">
+      <StatementPattern />
+      <Container className="relative">
         <div className="grid gap-12 lg:grid-cols-[1.35fr_0.85fr] lg:gap-24">
           <Reveal>
             <hr aria-hidden="true" className="rule-mark mb-9" />
