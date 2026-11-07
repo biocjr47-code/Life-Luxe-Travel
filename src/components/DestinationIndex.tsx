@@ -73,7 +73,7 @@ export function DestinationIndex() {
   return (
     <section
       ref={root}
-      className="relative isolate overflow-hidden py-24 lg:py-32"
+      className="relative isolate overflow-clip py-24 lg:py-32"
     >
       <img
         src="/images/nye-vv-group-embarkation.jpg"

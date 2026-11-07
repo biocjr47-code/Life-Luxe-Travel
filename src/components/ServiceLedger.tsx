@@ -61,7 +61,7 @@ const WORK = [
 
 export function ServiceLedger() {
   return (
-    <section className="relative isolate overflow-hidden border-y border-rule bg-white py-24 lg:py-32">
+    <section className="relative isolate overflow-clip border-y border-rule bg-white py-24 lg:py-32">
       <LedgerPattern />
       <Container className="relative">
         <Reveal>

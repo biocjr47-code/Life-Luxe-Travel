@@ -18,6 +18,12 @@ import { TRIPS } from "~/data/trips";
  * The year sits in its own column and sticks while its trips scroll
  * past, so you always know which season you are reading.
  *
+ * THE SECTION USES overflow-clip, NOT overflow-hidden. `hidden`
+ * makes this element a scroll container, and a scroll container
+ * between a sticky child and the viewport stops the sticky dead —
+ * the year froze in place the moment the background illustration
+ * was wrapped in. `clip` crops identically with no such effect.
+ *
  * Trips marked `preview` are the ones the live site labels "Details
  * Coming Soon". They are shown as previews rather than quietly
  * dropped, because a group leader planning 2028 wants to know the
@@ -32,7 +38,7 @@ export function SeasonCalendar() {
   const years = [...new Set(TRIPS.map((t) => t.year))];
 
   return (
-    <section className="relative isolate overflow-hidden border-y border-rule bg-ivory py-24 lg:py-32">
+    <section className="relative isolate overflow-clip border-y border-rule bg-ivory py-24 lg:py-32">
       <CalendarPattern />
       <Container className="relative">
         <Reveal>

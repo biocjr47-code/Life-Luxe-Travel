@@ -22,7 +22,7 @@ const YEAR = new Date().getFullYear();
  */
 export function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-plum text-white/70">
+    <footer className="relative isolate overflow-clip border-t border-white/10 bg-plum text-white/70">
       <FooterPattern />
       <Container className="relative py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">

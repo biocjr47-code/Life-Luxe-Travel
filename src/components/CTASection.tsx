@@ -75,7 +75,7 @@ export function CTASection({
   return (
     <section
       ref={root}
-      className="relative isolate overflow-hidden py-28 lg:py-40"
+      className="relative isolate overflow-clip py-28 lg:py-40"
     >
       <img
         src={image}

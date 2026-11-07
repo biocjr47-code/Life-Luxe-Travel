@@ -42,7 +42,7 @@ export function ValuePillars({
   className?: string;
 }) {
   return (
-    <section className={`relative isolate overflow-hidden ${className}`}>
+    <section className={`relative isolate overflow-clip ${className}`}>
       <PillarsPattern />
       <Container className="relative">
         <Reveal>

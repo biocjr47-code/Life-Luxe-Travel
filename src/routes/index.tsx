@@ -192,7 +192,7 @@ function Home() {
         {/* ── Full-bleed band ──────────────────────────────── */}
         <section
           ref={bandRef}
-          className="relative isolate flex min-h-[72svh] items-end overflow-hidden"
+          className="relative isolate flex min-h-[72svh] items-end overflow-clip"
         >
           <img
             src="/images/nye-2027-brilliant-lady.png"
@@ -251,7 +251,7 @@ function Home() {
         <JournalPreview />
 
         {/* ── Checklist opt-in ─────────────────────────────── */}
-        <section className="relative isolate overflow-hidden bg-brand-wash py-24 lg:py-32">
+        <section className="relative isolate overflow-clip bg-brand-wash py-24 lg:py-32">
           <ChecklistPattern />
           <div className="relative mx-auto grid max-w-[1180px] items-start gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:px-11">
             <div className="lg:pt-4">
