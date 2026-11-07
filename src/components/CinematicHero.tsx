@@ -129,7 +129,9 @@ export function CinematicHero({
         </p>
 
         <div className="ch-fade mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-          <Button href={primary.href}>{primary.label}</Button>
+          <Button href={primary.href} variant="accent">
+            {primary.label}
+          </Button>
           {secondary ? (
             <Button href={secondary.href} variant="ghost">
               {secondary.label}
@@ -147,13 +149,14 @@ export function CinematicHero({
           ink disc to survive the light sections, which made it a
           badge rather than part of the picture.
 
-          The mark is shown PLAIN — no filter, no blend mode. It was
-          running through grayscale+invert with mix-blend-screen to
-          knock the white disc out, but this sits inside an element
-          GSAP animates, and that stacking context isolates the
-          blend: the inverted black disc never dropped out, so the
-          logo wore a black plate. The artwork is a white disc
-          already. */}
+          The mark is a REAL WHITE KNOCKOUT ASSET, not a filtered
+          one. CSS cannot make a white-only mark out of artwork that
+          is already a white disc: grayscale+invert turns the disc
+          black, and the mix-blend-screen meant to drop that black
+          out is isolated by the stacking context GSAP creates here,
+          so the logo wore a black plate. llt-logo-white.png is
+          generated from the source by driving alpha off darkness —
+          the off-white disc clears, the mark survives in white. */}
       <div
         aria-hidden="true"
         className="ch-fade pointer-events-none absolute right-8 bottom-24 hidden size-[132px] lg:block"
@@ -175,7 +178,7 @@ export function CinematicHero({
         </svg>
         <span className="absolute inset-0 flex items-center justify-center">
           <img
-            src="/images/llt-logo.png"
+            src="/images/llt-logo-white.png"
             alt=""
             width={80}
             height={80}

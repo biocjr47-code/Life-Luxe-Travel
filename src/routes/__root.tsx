@@ -16,8 +16,11 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      // The real mark, generated from public/images/llt-logo.png at
+      // each size rather than scaled by the browser from one file.
+      { rel: "icon", href: "/favicon-32.png", type: "image/png", sizes: "32x32" },
+      { rel: "icon", href: "/favicon-48.png", type: "image/png", sizes: "48x48" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
       { rel: "manifest", href: "/site.webmanifest" },
       // Preconnect before the font CSS so the two round trips overlap.
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
