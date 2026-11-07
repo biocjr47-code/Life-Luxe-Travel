@@ -25,6 +25,11 @@ type Satellite = Photo & {
   /** 0 = far (small, slow), 1 = near (large, fast). */
   depth: number;
   rotate: number;
+  /** object-position for this card. A portrait photograph dropped
+   *  into the 3/2 "wide" frame crops from the centre, which is
+   *  where a standing subject's head is — set this to pull the
+   *  crop upward so the face survives. */
+  focus?: string;
 };
 
 export function ScatterField({
@@ -142,7 +147,10 @@ export function ScatterField({
               loading="lazy"
               decoding="async"
               className="w-full object-cover shadow-[0_4px_20px_rgba(12,11,10,0.12)]"
-              style={{ aspectRatio: s.span === "wide" ? "3/2" : "3/4" }}
+              style={{
+                aspectRatio: s.span === "wide" ? "3/2" : "3/4",
+                objectPosition: s.focus ?? "center",
+              }}
             />
           </figure>
         ))}

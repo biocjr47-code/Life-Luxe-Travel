@@ -14,7 +14,7 @@ import { Container } from "./Container";
  */
 export function StatementBand() {
   return (
-    <section className="py-24 lg:py-36">
+    <section className="bg-white py-24 lg:py-36">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[1.35fr_0.85fr] lg:gap-24">
           <Reveal>

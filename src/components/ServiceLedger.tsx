@@ -14,6 +14,11 @@ import { Container } from "./Container";
  *
  * Hairline rows, not cards. Seven cards would read as a pricing
  * table; seven ruled lines read as a ledger, which is what it is.
+ *
+ * On white rather than ink. As a dark slab this was 1,430px of the
+ * page's tallest single block and it dragged the whole middle of
+ * the scroll down with it; the ruled structure carries the section
+ * on its own without needing a black ground to sit on.
  */
 const WORK = [
   {
@@ -55,14 +60,14 @@ const WORK = [
 
 export function ServiceLedger() {
   return (
-    <section className="bg-ink py-24 lg:py-32">
+    <section className="border-y border-rule bg-white py-24 lg:py-32">
       <Container>
         <Reveal>
-          <hr aria-hidden="true" className="rule-mark rule-mark-lift mb-7" />
-          <h2 className="max-w-[18ch] font-display text-[clamp(2rem,4.2vw,3.25rem)] leading-[1.07] tracking-[-0.025em] text-white italic">
+          <hr aria-hidden="true" className="rule-mark mb-7" />
+          <h2 className="max-w-[18ch] font-display text-[clamp(2rem,4.2vw,3.25rem)] leading-[1.07] tracking-[-0.025em] text-ink italic">
             Everything between the idea and the arrival
           </h2>
-          <p className="measure mt-6 text-[1.0625rem] leading-relaxed text-white/75">
+          <p className="measure mt-6 text-[1.0625rem] leading-relaxed text-warm">
             You keep the part that matters — deciding who comes and what the
             trip is for. This is the rest of it.
           </p>
@@ -71,20 +76,20 @@ export function ServiceLedger() {
         <ol className="mt-14 lg:mt-20">
           {WORK.map((item, i) => (
             <Reveal as="li" key={item.name} delay={i * 60}>
-              <div className="grid grid-cols-[2.5rem_1fr] items-baseline gap-x-5 border-t border-white/15 py-7 lg:grid-cols-[4rem_minmax(0,20rem)_1fr] lg:gap-x-10 lg:py-8">
+              <div className="grid grid-cols-[2.5rem_1fr] items-baseline gap-x-5 border-t border-rule py-7 lg:grid-cols-[4rem_minmax(0,20rem)_1fr] lg:gap-x-10 lg:py-8">
                 {/* The index is decorative — an ordered list already
                     announces position, so reading "01" aloud would
                     say it twice. */}
                 <span
                   aria-hidden="true"
-                  className="tabular text-[0.75rem] font-bold tracking-[0.2em] text-brand-lift"
+                  className="tabular text-[0.75rem] font-bold tracking-[0.2em] text-brand-deep"
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-display text-[clamp(1.25rem,2.4vw,1.75rem)] leading-tight text-white">
+                <h3 className="font-display text-[clamp(1.25rem,2.4vw,1.75rem)] leading-tight text-ink">
                   {item.name}
                 </h3>
-                <p className="col-start-2 mt-2.5 max-w-[52ch] text-[0.9375rem] leading-relaxed text-white/70 lg:col-start-3 lg:mt-0">
+                <p className="col-start-2 mt-2.5 max-w-[52ch] text-[0.9375rem] leading-relaxed text-warm lg:col-start-3 lg:mt-0">
                   {item.gloss}
                 </p>
               </div>

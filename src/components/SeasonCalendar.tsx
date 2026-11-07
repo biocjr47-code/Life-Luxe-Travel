@@ -7,10 +7,12 @@ import { TRIPS } from "~/data/trips";
 /**
  * The published season, 2027 through 2029.
  *
- * Deliberately typographic: no thumbnails. The page already carries
- * a great deal of photography, and a travel house's calendar reads
- * as a calendar — an index you scan for a year and a month — not as
- * another row of picture cards.
+ * Each journey carries its photograph. Greece, the New Year's Eve
+ * sailing and the Derby use Life Luxe's own; the trips that have not
+ * happened yet use licensed destination photography, recorded in
+ * public/images/SOURCES.md. A row with no image lets its text run
+ * the full width rather than leaving a hole where a picture failed
+ * to arrive.
  *
  * The year sits in its own column and sticks while its trips scroll
  * past, so you always know which season you are reading.
@@ -20,6 +22,11 @@ import { TRIPS } from "~/data/trips";
  * dropped, because a group leader planning 2028 wants to know the
  * destination is coming even when the dates are not set.
  */
+
+/** The badge already says it; saying it again as the whole blurb
+ *  left rows reading "Details coming soon · DETAILS COMING SOON". */
+const TRAILING_SOON = /\s*Details coming soon\.?\s*$/i;
+
 export function SeasonCalendar() {
   const years = [...new Set(TRIPS.map((t) => t.year))];
 
@@ -52,60 +59,84 @@ export function SeasonCalendar() {
               <ul>
                 {TRIPS.filter((t) => t.year === year).map((trip, i) => {
                   const preview = trip.status === "preview";
-                  // The badge already says it. Saying it again as the
-                  // whole blurb left rows reading "Details coming
-                  // soon · DETAILS COMING SOON".
                   const blurb = preview
-                    ? trip.blurb.replace(/s*Details coming soon.?s*$/i, "").trim()
+                    ? trip.blurb.replace(TRAILING_SOON, "").trim()
                     : trip.blurb;
                   // Austin is "2027" and Ghana is "2029" — printing
-                  // that next to the year numeral says it twice.
+                  // that beside the year numeral says it twice.
                   const when = trip.when === trip.year ? null : trip.when;
-                  return (
-                  <Reveal as="li" key={trip.title} delay={i * 70}>
-                    <article className="group grid gap-x-10 gap-y-4 border-t border-rule py-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:py-10">
-                      <div>
-                        <h4 className="font-display text-[clamp(1.375rem,2.6vw,2rem)] leading-tight text-ink">
-                          {trip.title}
-                        </h4>
-                        {/* The date sits under the title as a detail
-                            line. Above it, it would be an eyebrow. */}
-                        {when || preview ? (
-                        <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-[0.75rem] font-bold tracking-[0.16em] text-brand-deep uppercase">
-                          {when}
-                          {preview ? (
-                            <span className="border border-sand bg-cream px-2.5 py-1 tracking-[0.12em] text-muted">
-                              Details coming soon
-                            </span>
-                          ) : null}
-                        </p>
-                        ) : null}
-                        <p className="mt-2.5 text-[0.9375rem] text-muted">
-                          {trip.where}
-                        </p>
-                      </div>
 
-                      <div>
-                        {blurb ? (
-                          <p className="max-w-[56ch] text-[1rem] leading-relaxed text-warm">
-                            {blurb}
-                          </p>
-                        ) : null}
-                        {trip.href ? (
-                          <a
-                            href={trip.href}
-                            className="mt-5 inline-flex min-h-11 items-center gap-2 text-[0.8125rem] font-bold tracking-[0.14em] text-brand-deep uppercase no-underline transition-[letter-spacing] duration-300 ease-luxe hover:tracking-[0.18em]"
-                          >
-                            Trip details
-                            <ArrowRight
-                              aria-hidden="true"
-                              className="size-4 transition-transform duration-300 ease-luxe group-hover:translate-x-1"
+                  return (
+                    <Reveal as="li" key={trip.title} delay={i * 70}>
+                      <article
+                        className={`group grid gap-x-10 gap-y-5 border-t border-rule py-8 lg:py-10 ${
+                          trip.image
+                            ? "lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)]"
+                            : ""
+                        }`}
+                      >
+                        {trip.image ? (
+                          <figure className="overflow-hidden">
+                            <img
+                              src={trip.image}
+                              alt={trip.imageAlt ?? ""}
+                              loading="lazy"
+                              decoding="async"
+                              className="aspect-[4/3] w-full object-cover transition-transform duration-[1100ms] ease-luxe group-hover:scale-[1.05]"
                             />
-                          </a>
+                          </figure>
                         ) : null}
-                      </div>
-                    </article>
-                  </Reveal>
+
+                        <div
+                          className={
+                            trip.image
+                              ? ""
+                              : "grid gap-x-10 gap-y-4 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]"
+                          }
+                        >
+                          <div>
+                            <h4 className="font-display text-[clamp(1.375rem,2.6vw,2rem)] leading-tight text-ink">
+                              {trip.title}
+                            </h4>
+                            {/* The date sits under the title as a
+                                detail line. Above it, an eyebrow. */}
+                            {when || preview ? (
+                              <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-[0.75rem] font-bold tracking-[0.16em] text-brand-deep uppercase">
+                                {when}
+                                {preview ? (
+                                  <span className="border border-sand bg-cream px-2.5 py-1 tracking-[0.12em] text-muted">
+                                    Details coming soon
+                                  </span>
+                                ) : null}
+                              </p>
+                            ) : null}
+                            <p className="mt-2.5 text-[0.9375rem] text-muted">
+                              {trip.where}
+                            </p>
+                          </div>
+
+                          <div className={trip.image ? "mt-4" : ""}>
+                            {blurb ? (
+                              <p className="max-w-[56ch] text-[1rem] leading-relaxed text-warm">
+                                {blurb}
+                              </p>
+                            ) : null}
+                            {trip.href ? (
+                              <a
+                                href={trip.href}
+                                className="mt-5 inline-flex min-h-11 items-center gap-2 text-[0.8125rem] font-bold tracking-[0.14em] text-brand-deep uppercase no-underline transition-[letter-spacing] duration-300 ease-luxe hover:tracking-[0.18em]"
+                              >
+                                Trip details
+                                <ArrowRight
+                                  aria-hidden="true"
+                                  className="size-4 transition-transform duration-300 ease-luxe group-hover:translate-x-1"
+                                />
+                              </a>
+                            ) : null}
+                          </div>
+                        </div>
+                      </article>
+                    </Reveal>
                   );
                 })}
               </ul>

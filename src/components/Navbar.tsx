@@ -89,7 +89,16 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             </a>
             <a
               href={LEADCONNECTOR.packingGuide}
-              className="inline-flex items-center border border-brand bg-brand px-4 py-2.5 text-[0.6875rem] font-bold tracking-[0.14em] whitespace-nowrap text-white uppercase no-underline transition-[background-color,color,letter-spacing] duration-300 ease-luxe hover:bg-white hover:tracking-[0.18em] hover:text-ink sm:px-5"
+              /* The house gesture is that the FILL DROPS OUT and the
+                 tracking opens — the border stays and the label keeps
+                 its colour. This one filled white and flipped its
+                 label to ink instead, which is the opposite move and
+                 the reason it read as a different button. Text stays
+                 white rather than going brand-deep as the solid
+                 variant does on light grounds: that pink cannot reach
+                 4.5:1 over the header scrim. min-h-11 because it
+                 measured 39px, under the 44px touch target. */
+              className="inline-flex min-h-11 items-center border border-brand bg-brand px-4 text-[0.6875rem] font-bold tracking-[0.14em] whitespace-nowrap text-white uppercase no-underline transition-[background-color,color,letter-spacing] duration-300 ease-luxe hover:bg-transparent hover:tracking-[0.18em] hover:text-white sm:px-5"
             >
               Free Packing Guide
             </a>
@@ -99,7 +108,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
 
       {/* ── Tier 2: mark and links ───────────────────────────── */}
       <nav aria-label="Main">
-        <Container className="flex min-h-[92px] flex-wrap items-center justify-between gap-6 py-4 lg:min-h-[106px] lg:flex-nowrap lg:py-0">
+        <Container className="flex min-h-[104px] flex-wrap items-center justify-between gap-6 py-4 lg:min-h-[124px] lg:flex-nowrap lg:py-0">
           <Link
             to="/"
             className="shrink-0"
@@ -108,9 +117,9 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             <img
               src="/images/llt-logo.png"
               alt=""
-              width={78}
-              height={78}
-              className="size-[62px] object-contain transition-transform duration-[350ms] ease-luxe hover:scale-105 lg:size-[78px]"
+              width={96}
+              height={96}
+              className="size-[72px] object-contain transition-transform duration-[350ms] ease-luxe hover:scale-105 lg:size-[96px]"
             />
           </Link>
 
@@ -147,7 +156,13 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
                     <Link
                       to={item.to}
                       aria-current={current ? "page" : undefined}
-                      className={`block border-b border-white/10 py-3.5 text-sm font-bold tracking-[0.1em] whitespace-nowrap uppercase no-underline transition-colors duration-200 lg:border-0 lg:py-1.5 lg:text-xs lg:tracking-[0.08em] xl:text-[0.8125rem] xl:tracking-[0.11em] ${
+                      /* Regular weight, not bold. Seven bold
+                         uppercase items in a row read as a toolbar;
+                         Lato 400 with the tracking opened out reads
+                         as a masthead. The size floor stays at 12px
+                         and the colour is unchanged, so the measured
+                         contrast over the header scrim holds. */
+                      className={`block border-b border-white/10 py-3.5 text-sm font-normal tracking-[0.14em] whitespace-nowrap uppercase no-underline transition-colors duration-200 lg:border-0 lg:py-1.5 lg:text-[0.6875rem] lg:tracking-[0.15em] xl:text-[0.75rem] xl:tracking-[0.18em] ${
                         current
                           ? "text-brand-lift"
                           : "text-white/90 hover:text-brand-lift"

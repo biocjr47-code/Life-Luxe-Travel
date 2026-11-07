@@ -55,6 +55,9 @@ export const TRIPS: Trip[] = [
     blurb:
       "A wellness retreat in the Texas Hill Country. Details coming soon.",
     status: "preview",
+    image: "/images/dest-austin.jpg",
+    imageAlt:
+      "The Austin skyline at golden hour, reflected in Lady Bird Lake beneath the arches of the Lamar Boulevard bridge",
   },
   {
     year: "2028",
@@ -63,6 +66,9 @@ export const TRIPS: Trip[] = [
     when: "January 2028",
     blurb: "Details coming soon.",
     status: "preview",
+    image: "/images/dest-australia.jpg",
+    imageAlt:
+      "Sydney Opera House and the Harbour Bridge lit at dusk, seen across the water",
   },
   {
     year: "2028",
@@ -83,6 +89,9 @@ export const TRIPS: Trip[] = [
     blurb:
       "Culture, cuisine, iconic views and unforgettable energy.",
     status: "open",
+    image: "/images/dest-rio.jpg",
+    imageAlt:
+      "Rio de Janeiro from above — Ipanema beach curving into the Atlantic, the lagoon inland, and Christ the Redeemer on the ridge",
   },
   {
     year: "2029",
@@ -91,6 +100,9 @@ export const TRIPS: Trip[] = [
     when: "2029",
     blurb: "Culture, heritage, connection and celebration.",
     status: "open",
+    image: "/images/dest-ghana.jpg",
+    imageAlt:
+      "The whitewashed archway of Elmina Castle on the Ghanaian coast, framing fishing boats on the water beyond",
   },
 ];
 

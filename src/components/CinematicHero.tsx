@@ -99,13 +99,22 @@ export function CinematicHero({
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(100deg, rgb(12 11 10 / .72) 0%, rgb(12 11 10 / .40) 38%, rgb(12 11 10 / .06) 62%, rgb(12 11 10 / 0) 74%)," +
-            "linear-gradient(180deg, rgb(12 11 10 / .26) 0%, rgb(12 11 10 / .12) 28%, rgb(12 11 10 / .66) 70%, rgb(12 11 10 / .94) 100%)",
+            // A POOL, NOT A WASH. Two broad gradients dark enough to
+            // carry the type also dimmed the mountains and the
+            // breaking wave, which are the reason to use this
+            // photograph at all. The broad layers are now thin, and
+            // a radial anchored at the bottom-left does the actual
+            // work — it puts the density only where the headline,
+            // the subtitle and the buttons sit, and reaches zero
+            // before it touches the surf on the right.
+            "radial-gradient(118% 92% at 6% 86%, rgb(12 11 10 / .76) 0%, rgb(12 11 10 / .56) 34%, rgb(12 11 10 / .22) 60%, rgb(12 11 10 / 0) 78%)," +
+            "linear-gradient(100deg, rgb(12 11 10 / .40) 0%, rgb(12 11 10 / .18) 36%, rgb(12 11 10 / .02) 60%, rgb(12 11 10 / 0) 72%)," +
+            "linear-gradient(180deg, rgb(12 11 10 / .10) 0%, rgb(12 11 10 / .03) 30%, rgb(12 11 10 / .34) 74%, rgb(12 11 10 / .62) 100%)",
         }}
       />
 
       <div className="relative mx-auto w-full max-w-[1180px] px-5 pt-36 pb-20 sm:px-8 lg:px-11 lg:pb-28">
-        <h1 className="max-w-[16ch] font-display text-[clamp(2.5rem,6.6vw,5.25rem)] leading-[1.04] tracking-[-0.028em] text-white italic">
+        <h1 className="max-w-[17ch] font-display text-[clamp(2.125rem,5.2vw,4.125rem)] leading-[1.06] tracking-[-0.026em] text-white italic">
           {lines.map((line) => (
             // Each line is its own clipping mask, so the rise reads
             // as type emerging from behind an edge.
@@ -151,8 +160,24 @@ export function CinematicHero({
             <textPath href="#sealPath">{sealText}</textPath>
           </text>
         </svg>
+        {/* The mark sits in the ring instead of an arrow. The
+            artwork has a white disc baked into it, so it is run
+            through grayscale and held at 85% — that reads as a
+            monochrome seal rather than a pink sticker dropped on a
+            photograph. A proper knockout PNG would be better still;
+            see the note in the README. */}
         <span className="absolute inset-0 flex items-center justify-center">
-          <ArrowUpRight aria-hidden="true" className="size-6 text-white/80" />
+          <img
+            src="/images/llt-logo.png"
+            alt=""
+            /* The ring is a 132 viewBox with its textPath at r=50 and
+               a 10px face, so the glyphs occupy roughly r=45–55 and
+               the clear space inside is about 90px across. At 80px
+               the mark almost fills it and leaves a hair of air. */
+            width={80}
+            height={80}
+            className="size-20 object-contain opacity-85 [filter:grayscale(1)_contrast(1.05)]"
+          />
         </span>
       </div>
     </section>

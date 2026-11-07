@@ -25,6 +25,11 @@
 
   /* ── Ground ─────────────────────────────────────────────────
      Warm, not neutral. A travel page lit by afternoon light. */
+  /* The deep plum from lifeluxetravel.com, where it is declared in
+     :root beside the brand pink as --color-m2u1gq1d. Warmer than
+     --color-ink and the right ground for the footer, which should
+     not read as the same black as a photographic band. */
+  --color-plum: #2b161b;
   --color-ink: #0c0b0a;
   --color-ink-soft: #2a2522;
   --color-cream: #faf7f2;
@@ -227,7 +232,12 @@ html.lenis body { height: auto; }
   .animate-\[sealSpin_22s_linear_infinite\] { animation: none !important; }
 }
 
-/* The certification marquee. -50% because the row is duplicated. */
+/* The certification marquee.
+   -50% advances exactly half the track. MarqueeBand renders FOUR
+   copies of the badge row, so half is two rows — wide enough that
+   the loop never runs out of track on a desktop viewport. If the
+   copy count there changes, this stays at -50%; the component is
+   what guarantees the half is wide enough. */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }

@@ -1,25 +1,39 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone } from "lucide-react";
 import { InstagramIcon, SOCIAL_ICONS } from "./BrandIcons";
+import { FooterPattern } from "./FooterPattern";
 import { Container } from "./Container";
 import { NAV, SITE, SOCIAL } from "~/data/site";
 import { AMAZON_DISCLOSURE } from "~/data/content";
 
 const YEAR = new Date().getFullYear();
 
+/**
+ * The footer sits on --color-plum (#2b161b), the deep plum declared
+ * in :root on lifeluxetravel.com beside the brand pink. It is warmer
+ * than --color-ink and, because the CTA above it is now a
+ * photographic band, giving the footer its own colour is what keeps
+ * the two from reading as one continuous dark mass.
+ *
+ * Measured on plum: white/70 is 10.5:1, white/55 is 6.5:1 and the
+ * white/45 disclosure is 4.96:1 — all above the 4.5 floor. The
+ * illustration behind them is held at low opacity and fades out
+ * before the legal line, so it does not move those numbers.
+ */
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-ink text-white/70">
-      <Container className="py-16 lg:py-20">
+    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-plum text-white/70">
+      <FooterPattern />
+      <Container className="relative py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
           {/* Identity */}
           <div>
             <img
               src="/images/llt-logo.png"
               alt=""
-              width={72}
-              height={72}
-              className="size-[72px] object-contain"
+              width={96}
+              height={96}
+              className="size-[88px] object-contain"
             />
             <p className="measure mt-6 text-[0.9375rem] leading-relaxed text-white/70">
               {SITE.tagline} We partner with group leaders who want to bring

@@ -16,7 +16,7 @@ import { TestimonialWall } from "~/components/TestimonialWall";
 import { JournalPreview } from "~/components/JournalPreview";
 import { Button } from "~/components/Button";
 import { CTASection } from "~/components/CTASection";
-import { GhlFormEmbed } from "~/integrations/GhlFormEmbed";
+import { ChecklistForm } from "~/components/ChecklistForm";
 import { seo } from "~/components/Seo";
 import { useGsap, useSmoothScroll } from "~/lib/motion";
 import { LEADCONNECTOR, SITE, STATS } from "~/data/site";
@@ -40,11 +40,11 @@ const STAT_ICONS = { users: Users, map: Map, globe: Globe } as const;
  */
 const SATELLITES: Satellite[] = [
   { src: "/images/marrakech-majorelle-pavilion.jpg", alt: "", caption: "", place: "", x: 4, y: 16, depth: 0.82, rotate: -6 },
-  { src: "/images/bali-rice-terrace.jpg", alt: "", caption: "", place: "", x: 17, y: 47, depth: 0.45, rotate: 4, span: "wide" },
+  { src: "/images/bali-rice-terrace.jpg", alt: "", caption: "", place: "", x: 17, y: 47, depth: 0.45, rotate: 4, span: "wide", focus: "center 20%" },
   { src: "/images/greece-erechtheion.jpg", alt: "", caption: "", place: "", x: 3, y: 64, depth: 0.6, rotate: 7 },
   { src: "/images/derby-hats.jpg", alt: "", caption: "", place: "", x: 21, y: 10, depth: 0.3, rotate: 9 },
   { src: "/images/sa-table-mountain.jpg", alt: "", caption: "", place: "", x: 79, y: 14, depth: 0.74, rotate: 5 },
-  { src: "/images/nye-vv-2026-cozumel.jpg", alt: "", caption: "", place: "", x: 72, y: 45, depth: 0.4, rotate: -5, span: "wide" },
+  { src: "/images/nye-vv-2026-cozumel.jpg", alt: "", caption: "", place: "", x: 72, y: 45, depth: 0.4, rotate: -5, span: "wide", focus: "center 30%" },
   { src: "/images/terry-abu-dhabi.jpg", alt: "", caption: "", place: "", x: 84, y: 63, depth: 0.64, rotate: -8 },
   { src: "/images/marrakech-mint-tea.jpg", alt: "", caption: "", place: "", x: 76, y: 79, depth: 0.34, rotate: 6 },
   { src: "/images/sa-waterfront.jpg", alt: "", caption: "", place: "", x: 12, y: 79, depth: 0.5, rotate: -4 },
@@ -72,7 +72,6 @@ function Home() {
     [],
   );
 
-  const greece = TRIPS.find((t) => t.title.startsWith("Greece"))!;
   const nye = TRIPS.find((t) => t.title.startsWith("New Year"))!;
 
   return (
@@ -115,7 +114,7 @@ function Home() {
           centreFocus="center 34%"
           satellites={SATELLITES}
           heading="One hundred trips. Thirty-four countries. Not one of them planned by you."
-          lede="Every photograph on this page was taken on a Life Luxe journey, by the people who were there. No stock, no staging — just what the trips actually look like."
+          lede="These were all taken on Life Luxe journeys, by the people who were there. No stock, no staging — just what the trips actually look like."
         />
 
         {/* ── Figures ──────────────────────────────────────── */}
@@ -151,8 +150,8 @@ function Home() {
             "Destination research, itinerary design, supplier contracts, rooming lists, group air, payment plans, and someone reachable while you are in the air. All of it.",
             "You keep the part that matters — deciding who comes and what the trip is for. We take the six months of logistics that usually sit between a good idea and a group actually boarding.",
           ]}
-          image="/images/greece-terry-by-the-water.jpg"
-          imageAlt="Terry Powell, founder of Life Luxe Travel, standing by the water in Greece"
+          image="/images/terry-headshot.jpg"
+          imageAlt="Terry Powell, founder of Life Luxe Travel, in a studio portrait — dark sleeveless top, pearl necklace, shoulder-length curls"
           footnote="Terry Powell · Founder"
         >
           <div className="mt-8">
@@ -162,26 +161,11 @@ function Home() {
           </div>
         </SplitFeature>
 
-        <SplitFeature
-          flip
-          heading={greece.title}
-          body={[greece.blurb]}
-          image={greece.image!}
-          imageAlt={greece.imageAlt!}
-          footnote={`${greece.when} · ${greece.where}`}
-        >
-          <div className="mt-8">
-            <Button href={greece.href!} size="sm">
-              Trip details
-            </Button>
-          </div>
-        </SplitFeature>
-
         {/* ── Full-bleed band ──────────────────────────────── */}
         <section className="relative isolate flex min-h-[72svh] items-end overflow-hidden">
           <img
-            src="/images/nye-vv-group-embarkation.jpg"
-            alt="The Life Luxe group gathered at the cruise terminal on embarkation day in Miami"
+            src="/images/nye-2027-ship-fireworks.jpg"
+            alt="A cruise ship lit up at night under fireworks"
             loading="lazy"
             decoding="async"
             className="absolute inset-0 -z-10 size-full object-cover"
@@ -195,7 +179,7 @@ function Home() {
                large-text floor. */
             style={{
               background:
-                "linear-gradient(180deg, rgb(12 11 10 / .42) 0%, rgb(12 11 10 / .18) 26%, rgb(12 11 10 / .84) 66%, rgb(12 11 10 / .96) 100%)",
+                "linear-gradient(180deg, rgb(12 11 10 / .14) 0%, rgb(12 11 10 / .06) 24%, rgb(12 11 10 / .80) 62%, rgb(12 11 10 / .95) 100%)",
             }}
           />
           <div className="mx-auto w-full max-w-[1180px] px-5 pb-16 sm:px-8 lg:px-11 lg:pb-24">
@@ -226,7 +210,7 @@ function Home() {
 
         <ValuePillars
           lede="Group travel is its own discipline. These are the credentials behind it."
-          className="py-24 lg:py-32"
+          className="bg-white py-24 lg:py-32"
         />
 
         <DestinationIndex />
@@ -248,10 +232,7 @@ function Home() {
                 right destination to getting everyone paid and packed.
               </p>
             </div>
-            <GhlFormEmbed
-              title="Get the free Group Trip Planning Checklist"
-              minHeight={520}
-            />
+            <ChecklistForm />
           </div>
         </section>
 

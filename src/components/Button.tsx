@@ -24,14 +24,14 @@ type Variant = "solid" | "onDark" | "ghost" | "quiet";
 type Size = "md" | "sm";
 
 const BASE =
-  "group inline-flex items-center justify-center gap-2 font-sans font-bold uppercase " +
+  "group inline-flex min-h-11 items-center justify-center gap-2 font-sans font-bold uppercase " +
   "no-underline border cursor-pointer text-center " +
   "transition-[background-color,color,border-color,letter-spacing] duration-400 ease-luxe " +
   "disabled:opacity-45 disabled:cursor-not-allowed disabled:tracking-[0.22em]";
 
 const SIZES: Record<Size, string> = {
-  md: "px-11 py-5 text-[0.6875rem] tracking-[0.22em] hover:tracking-[0.27em]",
-  sm: "px-7 py-3.5 text-[0.6875rem] tracking-[0.18em] hover:tracking-[0.22em]",
+  md: "px-8 py-3.5 text-[0.6875rem] tracking-[0.2em] hover:tracking-[0.25em]",
+  sm: "px-6 py-3 text-[0.6875rem] tracking-[0.16em] hover:tracking-[0.2em]",
 };
 
 const VARIANTS: Record<Variant, string> = {

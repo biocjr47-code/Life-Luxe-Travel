@@ -1,18 +1,32 @@
-import type { ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import { Container } from "./Container";
 import { SectionHeading } from "./SectionHeading";
 import { Button } from "./Button";
+import { useGsap } from "~/lib/motion";
 import { LEADCONNECTOR } from "~/data/site";
 
 /**
- * The closing ask.
+ * The closing ask, over a parallaxed photograph.
  *
- * It sits on ink-soft, NOT on ink. The footer below it is ink, and
- * when both were the same black the two ran together into one
- * 1,200px slab with no boundary — the ask simply dissolved into the
- * privacy links. Warm charcoal over true black reads as two plates,
- * and puts the heaviest tone at the base of the page where it
- * belongs.
+ * THE IMAGE IS OVERSIZED ON PURPOSE. A parallaxed background has to
+ * be taller than its frame or the drift exposes the edge — scale-115
+ * plus a ±7% travel keeps the frame covered at both ends of the
+ * scrub.
+ *
+ * The default photograph is Life Luxe's own: the group at the cruise
+ * terminal on embarkation day. A page that closes by asking about
+ * your group should be showing one.
+ *
+ * SEPARATION FROM THE FOOTER. These two must not merge — when the
+ * CTA and the ink footer shared a ground they ran together into one
+ * 1,200px slab and the ask dissolved into the privacy links. The
+ * scrim here stops at 72% rather than ramping to black, so the
+ * photograph is still visibly a photograph where it meets the
+ * footer's true black, and the footer carries its own top rule.
+ *
+ * The scrim is also what makes the white type legible: this
+ * photograph is bright where the heading sits, and an earlier band
+ * using it measured 2.83:1 before its gradient was deepened.
  */
 export function CTASection({
   title = "Let's plan your group's journey",
@@ -20,15 +34,62 @@ export function CTASection({
   primaryLabel = "Book a consultation",
   primaryHref = LEADCONNECTOR.bookingWidget,
   secondary,
+  image = "/images/nye-vv-group-embarkation.jpg",
+  imageAlt = "The Life Luxe group gathered at the cruise terminal on embarkation day in Miami",
 }: {
   title?: ReactNode;
   lede?: ReactNode;
   primaryLabel?: string;
   primaryHref?: string;
   secondary?: { label: string; to?: string; href?: string };
+  image?: string;
+  imageAlt?: string;
 }) {
+  const root = useRef<HTMLElement>(null);
+
+  useGsap(
+    ({ gsap, reduced }) => {
+      if (reduced) return;
+      gsap.fromTo(
+        ".cta-media",
+        { yPercent: -7 },
+        {
+          yPercent: 7,
+          ease: "none",
+          scrollTrigger: {
+            trigger: root.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.1,
+          },
+        },
+      );
+    },
+    root,
+    [],
+  );
+
   return (
-    <section className="bg-ink-soft py-24 lg:py-32">
+    <section
+      ref={root}
+      className="relative isolate overflow-hidden py-28 lg:py-40"
+    >
+      <img
+        src={image}
+        alt={imageAlt}
+        loading="lazy"
+        decoding="async"
+        className="cta-media absolute inset-0 -z-10 size-full scale-115 object-cover will-change-transform"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(180deg, rgb(12 11 10 / .58) 0%, rgb(12 11 10 / .66) 55%, rgb(12 11 10 / .72) 100%)",
+        }}
+      />
+
       <Container>
         <div className="mx-auto max-w-[46rem] text-center">
           <SectionHeading

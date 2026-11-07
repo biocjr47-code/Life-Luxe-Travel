@@ -1,4 +1,4 @@
-import { Cake, Gift, Palmtree, Snowflake, Sun } from "lucide-react";
+import { ArrowUpRight, Cake, Gift, Palmtree, Snowflake, Sun } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { Container } from "./Container";
 import { Button } from "./Button";
@@ -11,10 +11,16 @@ import { CUSTOM_GETAWAYS, DESTINATIONS, PAST_HIGHLIGHTS } from "~/data/trips";
  * homepage offers as inspiration, the occasions Life Luxe plans
  * private trips around, and the journeys already run.
  *
- * The destinations are set as a type specimen rather than as cards.
- * There is no photograph for most of them in the archive, and a grid
- * of stock images on a page whose whole argument is "these are our
- * own photographs" would undo the gallery above it.
+ * The destinations were a wrapped type specimen with middots. It
+ * looked composed and did nothing — the names carry their own
+ * commas ("Bali, Indonesia"), so the separators had to be added just
+ * to keep them legible, and a bullet stranded at the end of a
+ * wrapped line is a typographic tell. They are now a ruled index
+ * where each name is a link into the enquiry form, which is the
+ * action the whole section exists to prompt.
+ *
+ * Still no photographs: there are none of Life Luxe's own for most
+ * of these, and a grid of stock here would undo the gallery above.
  */
 const OCCASION_ICONS = {
   cake: Cake,
@@ -23,6 +29,8 @@ const OCCASION_ICONS = {
   snowflake: Snowflake,
   gift: Gift,
 } as const;
+
+const ENQUIRE = "/group-trips#enquire";
 
 export function DestinationIndex() {
   return (
@@ -36,27 +44,31 @@ export function DestinationIndex() {
             </h2>
             <p className="measure mt-6 text-[1.0625rem] leading-relaxed text-warm">
               A private trip, planned around your group and your occasion.
-              These are the destinations groups ask for most.
+              These are the destinations groups ask for most — pick one and
+              tell us who is coming.
             </p>
 
-            <ul className="mt-10 flex flex-wrap items-baseline gap-x-5 gap-y-3">
-              {DESTINATIONS.map((place, i) => (
-                <li
-                  key={place}
-                  className="flex items-baseline gap-5 font-display text-[clamp(1.25rem,2.4vw,1.875rem)] leading-tight text-ink-soft"
-                >
-                  {place}
-                  {i < DESTINATIONS.length - 1 ? (
-                    <span aria-hidden="true" className="text-[0.75em] text-brand/55">
-                      &bull;
+            <ul className="mt-10 grid sm:grid-cols-2 sm:gap-x-12">
+              {DESTINATIONS.map((place) => (
+                <li key={place}>
+                  <a
+                    href={ENQUIRE}
+                    className="group flex min-h-11 items-baseline justify-between gap-4 border-t border-rule py-3.5 no-underline"
+                  >
+                    <span className="font-display text-[clamp(1.125rem,2vw,1.5rem)] leading-tight text-ink-soft transition-colors duration-300 group-hover:text-brand-deep">
+                      {place}
                     </span>
-                  ) : null}
+                    <ArrowUpRight
+                      aria-hidden="true"
+                      className="size-4 shrink-0 self-center text-brand-deep opacity-0 transition-all duration-300 ease-luxe group-hover:translate-x-0.5 group-hover:opacity-100"
+                    />
+                  </a>
                 </li>
               ))}
             </ul>
 
             <div className="mt-11">
-              <Button href="/group-trips#enquire" size="sm">
+              <Button href={ENQUIRE} size="sm">
                 Plan a private trip
               </Button>
             </div>
@@ -95,11 +107,11 @@ export function DestinationIndex() {
             <h3 className="mt-12 text-[0.75rem] font-bold tracking-[0.2em] text-muted uppercase">
               Already run
             </h3>
-            <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+            <ul className="mt-6">
               {PAST_HIGHLIGHTS.map((p) => (
                 <li
                   key={p}
-                  className="font-display text-[1.25rem] text-ink-soft"
+                  className="border-t border-rule py-3 font-display text-[1.125rem] text-ink-soft"
                 >
                   {p}
                 </li>
