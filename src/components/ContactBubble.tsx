@@ -193,18 +193,20 @@ export function ContactBubble() {
               placeholder="Write a message…"
               className="max-h-28 min-h-11 w-full resize-y rounded-2xl border border-rule bg-white px-4 py-2.5 text-[0.875rem] text-ink transition-colors duration-200 placeholder:text-muted/70 focus:border-brand focus:outline-none"
             />
+            {/* The caption that used to sit here explained that
+                this opens a mail client. It is gone at Terry's
+                request, so the explanation lives in the accessible
+                name instead — a screen reader still announces where
+                the button leads before it is pressed. */}
             <button
               type="submit"
               disabled={!message.trim()}
-              aria-label="Send message"
+              aria-label={`Send this message by email to ${SITE.email}`}
               className="flex size-11 shrink-0 items-center justify-center rounded-full bg-brand text-white transition-[background-color,opacity] duration-200 hover:bg-brand-deep disabled:cursor-not-allowed disabled:opacity-40"
             >
               <Send aria-hidden="true" className="size-4" />
             </button>
           </div>
-          <p className="mt-2 text-[0.75rem] leading-relaxed text-muted">
-            Opens in your mail app, addressed to {SITE.email}.
-          </p>
         </form>
       </div>
 
