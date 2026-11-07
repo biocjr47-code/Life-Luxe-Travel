@@ -1,3 +1,4 @@
+import { Container } from "./Container";
 import { CERTIFICATIONS } from "~/data/site";
 
 /**
@@ -22,6 +23,12 @@ import { CERTIFICATIONS } from "~/data/site";
  *
  * Only the first copy is read out; the rest are aria-hidden so a
  * screen reader hears the list once.
+ *
+ * The track runs inside the shared Container rather than full
+ * bleed, so the badges begin and end on the same rail as every
+ * other section instead of bleeding past the page's edges. That
+ * narrows the visible width from the viewport to about 1,092px,
+ * which the two-row half still covers comfortably.
  */
 const COPIES = 4;
 
@@ -49,17 +56,19 @@ export function MarqueeBand() {
   return (
     <section className="border-y border-rule bg-ivory py-10 lg:py-12">
       <h2 className="sr-only">Travel professional certifications</h2>
-      <div className="group relative flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
+      <Container>
+        <div className="group relative flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]">
         {/* bg-ivory here, not only on the section. The track is
             animated, so its transform makes it a stacking context —
             and mix-blend-multiply on the badges blends against THAT
             group, not the page behind it. Without a ground inside the
             group the white JPEG backgrounds stay white and every
             badge sits on a visible card. */}
-        <div className="flex w-max animate-[marquee_72s_linear_infinite] bg-ivory group-hover:[animation-play-state:paused] motion-reduce:animate-none">
-          {Array.from({ length: COPIES }, (_, i) => row(i))}
+          <div className="flex w-max animate-[marquee_72s_linear_infinite] bg-ivory group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+            {Array.from({ length: COPIES }, (_, i) => row(i))}
+          </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

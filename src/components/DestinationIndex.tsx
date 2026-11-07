@@ -17,6 +17,12 @@ import { CUSTOM_GETAWAYS, DESTINATIONS, PAST_HIGHLIGHTS } from "~/data/trips";
  * Year's Eve band. scale-115 plus a ±7% travel keeps the frame
  * covered at both ends of the scrub.
  *
+ * THE PHOTOGRAPH IS LIFE LUXE'S OWN TRAVELLERS. It was a stock
+ * airport silhouette, which was men with roller cases — not the
+ * people this agency actually takes away. This is the group at the
+ * cruise terminal on embarkation day, which matches the audience
+ * and needs no licence.
+ *
  * THE SCRIM IS NOT DECORATION. The sunset in this frame is close to
  * pure white, so a thin veil would have left small type sitting on
  * blown highlights. It holds around .74 throughout, which measures
@@ -70,8 +76,8 @@ export function DestinationIndex() {
       className="relative isolate overflow-hidden py-24 lg:py-32"
     >
       <img
-        src="/images/dest-travellers.jpg"
-        alt="Travellers in silhouette walking through an airport terminal at sunset, aircraft on the apron beyond the glass"
+        src="/images/nye-vv-group-embarkation.jpg"
+        alt="The Life Luxe group at the cruise terminal in Miami on embarkation day"
         loading="lazy"
         decoding="async"
         className="di-media absolute inset-0 -z-10 size-full scale-115 object-cover will-change-transform"
@@ -81,7 +87,13 @@ export function DestinationIndex() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(180deg, rgb(12 11 10 / .74) 0%, rgb(12 11 10 / .70) 46%, rgb(12 11 10 / .78) 100%)",
+            // Two layers. The vertical one is the floor; the
+            // horizontal one deepens toward the RIGHT, where the
+            // ship's white hull and the group are brightest and
+            // where both right-hand lists sit. One flat veil left
+            // that column fighting the photograph.
+            "linear-gradient(90deg, rgb(12 11 10 / .10) 0%, rgb(12 11 10 / .26) 46%, rgb(12 11 10 / .42) 100%)," +
+            "linear-gradient(180deg, rgb(12 11 10 / .74) 0%, rgb(12 11 10 / .72) 46%, rgb(12 11 10 / .80) 100%)",
         }}
       />
 

@@ -17,6 +17,7 @@ import { JournalPreview } from "~/components/JournalPreview";
 import { Button } from "~/components/Button";
 import { CTASection } from "~/components/CTASection";
 import { ChecklistForm } from "~/components/ChecklistForm";
+import { ChecklistPattern } from "~/components/ChecklistPattern";
 import { seo } from "~/components/Seo";
 import { useGsap, useSmoothScroll } from "~/lib/motion";
 import { LEADCONNECTOR, SITE, STATS } from "~/data/site";
@@ -250,8 +251,9 @@ function Home() {
         <JournalPreview />
 
         {/* ── Checklist opt-in ─────────────────────────────── */}
-        <section className="bg-brand-wash py-24 lg:py-32">
-          <div className="mx-auto grid max-w-[1180px] items-start gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:px-11">
+        <section className="relative isolate overflow-hidden bg-brand-wash py-24 lg:py-32">
+          <ChecklistPattern />
+          <div className="relative mx-auto grid max-w-[1180px] items-start gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:px-11">
             <div className="lg:pt-4">
               <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.06] tracking-[-0.024em] text-ink">
                 The Ultimate Group Trip Planning Checklist

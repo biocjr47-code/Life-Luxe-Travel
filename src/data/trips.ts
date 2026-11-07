@@ -81,8 +81,9 @@ export const TRIPS: Trip[] = [
     blurb:
       "Churchill Downs on Derby day — a trip Terry has hosted before. Details coming soon.",
     status: "preview",
-    image: "/images/derby-hats.jpg",
-    imageAlt: "Two travellers in wide purple and pink Derby hats",
+    image: "/images/dest-derby.jpg",
+    imageAlt:
+      "Five jockeys in bright silks riding hard down the home straight, the field bunched at full gallop",
   },
   {
     year: "2028",
@@ -105,7 +106,7 @@ export const TRIPS: Trip[] = [
     status: "open",
     image: "/images/dest-ghana.jpg",
     imageAlt:
-      "A busy street in Accra, Ghana — families and traders walking between market stalls in bright sunlight",
+      "Independence Arch in Accra, Ghana — the Black Star above the inscription Freedom and Justice, AD 1957",
   },
 ];
 

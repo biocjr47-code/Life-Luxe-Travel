@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { Container } from "./Container";
+import { CalendarPattern } from "./CalendarPattern";
 import { Button } from "./Button";
 import { TRIPS } from "~/data/trips";
 
@@ -31,8 +32,9 @@ export function SeasonCalendar() {
   const years = [...new Set(TRIPS.map((t) => t.year))];
 
   return (
-    <section className="border-y border-rule bg-ivory py-24 lg:py-32">
-      <Container>
+    <section className="relative isolate overflow-hidden border-y border-rule bg-ivory py-24 lg:py-32">
+      <CalendarPattern />
+      <Container className="relative">
         <Reveal>
           <hr aria-hidden="true" className="rule-mark mb-7" />
           <h2 className="max-w-[20ch] font-display text-[clamp(2rem,4.2vw,3.25rem)] leading-[1.07] tracking-[-0.025em] text-ink italic">

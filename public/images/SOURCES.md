@@ -22,7 +22,8 @@ DESTINATION — they are never presented as a Life Luxe trip.
 | `dest-austin.jpg` | Austin, Texas — 2027 | https://www.pexels.com/photo/skyscrapers-over-river-in-austin-in-texas-25003745/ |
 | `dest-australia.jpg` | Australia — Jan 2028 | https://www.pexels.com/photo/exterior-of-sydney-opera-house-in-late-evening-5707610/ |
 | `dest-rio.jpg` | Rio de Janeiro — Sep 2028 | https://www.pexels.com/photo/aerial-view-of-rio-de-janeiro-7079778/ |
-| `dest-ghana.jpg` | Ghana — 2029 | https://www.pexels.com/photo/a-people-walking-on-the-street-13699256/ |
+| `dest-ghana.jpg` | Ghana — 2029 | https://www.pexels.com/photo/independence-arch-in-accra-ghana-20131678/ |
+| `dest-derby.jpg` | The Kentucky Derby — 2028 | https://www.pexels.com/photo/intense-horse-racing-action-at-the-track-29530479/ |
 
 ## The NYE 2027 campaign images
 
