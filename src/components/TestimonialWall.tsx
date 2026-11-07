@@ -19,11 +19,19 @@ import { TESTIMONIALS } from "~/data/testimonials";
  * — the full accounts are a click away and nothing is reworded to
  * fit.
  *
- * THE PICTURES ARE THE TRIPS, NOT THE GUESTS. There are no guest
- * portraits, and the live site credits these by journey rather than
- * by name, so no face, name or star rating is invented to make this
- * look more like a review widget. Square, because a circle is the
- * universal shorthand for a person's face.
+ * THESE ARE THE GUESTS. The live site's "Happy Travelers" section
+ * publishes a first name, a home city and a portrait for each one,
+ * so that is what the card carries. I had previously shown the trip
+ * photograph here and said no attributions existed — they do, on
+ * lifeluxetravel.com/testimonials, and these are reproduced as
+ * published. Still no surnames and no star ratings, because the
+ * live page has neither.
+ *
+ * ROUND, and this is the one place on the site that is. The house
+ * geometry is square and a circle is the universal shorthand for
+ * "this is a person's face" — which is precisely what these are.
+ * The source files are pre-cropped circles with white or black
+ * corners, so a square frame would show those corners anyway.
  */
 export function TestimonialWall() {
   return (
@@ -53,16 +61,24 @@ export function TestimonialWall() {
                 <blockquote className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-warm">
                   <p>{t.quote[0]}</p>
                 </blockquote>
-                <figcaption className="mt-5 flex items-center gap-3">
+                <figcaption className="mt-6 flex items-center gap-3.5">
                   <img
-                    src={t.image}
-                    alt={t.imageAlt}
+                    src={t.avatar}
+                    alt={t.avatarAlt}
                     loading="lazy"
                     decoding="async"
-                    className="size-11 shrink-0 object-cover"
+                    className="size-14 shrink-0 rounded-full object-cover"
                   />
-                  <span className="text-[0.6875rem] font-bold tracking-[0.14em] text-muted uppercase">
-                    {t.trip}
+                  <span>
+                    <span className="block font-display text-[1.0625rem] leading-tight text-ink">
+                      {t.name}
+                    </span>
+                    <span className="mt-0.5 block text-[0.8125rem] text-muted">
+                      {t.location}
+                    </span>
+                    <span className="mt-1 block text-[0.6875rem] font-bold tracking-[0.12em] text-brand-deep uppercase">
+                      {t.trip}
+                    </span>
                   </span>
                 </figcaption>
               </figure>

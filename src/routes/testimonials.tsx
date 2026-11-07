@@ -69,8 +69,30 @@ function Testimonials() {
                         <p key={p.slice(0, 32)}>{p}</p>
                       ))}
                     </blockquote>
-                    <figcaption className="mt-6 text-[0.8125rem] font-bold tracking-[0.14em] text-muted uppercase">
-                      {t.trip}
+                    {/* The live site's "Happy Travelers" section
+                        publishes a first name, a home city and a
+                        portrait for each of these. Round, because
+                        they are faces — the one exception to the
+                        site's square geometry. */}
+                    <figcaption className="mt-7 flex items-center gap-4">
+                      <img
+                        src={t.avatar}
+                        alt={t.avatarAlt}
+                        loading="lazy"
+                        decoding="async"
+                        className="size-16 shrink-0 rounded-full object-cover"
+                      />
+                      <span>
+                        <span className="block font-display text-[1.25rem] leading-tight text-ink">
+                          {t.name}
+                        </span>
+                        <span className="mt-0.5 block text-[0.9375rem] text-muted">
+                          {t.location}
+                        </span>
+                        <span className="mt-1.5 block text-[0.75rem] font-bold tracking-[0.14em] text-brand-deep uppercase">
+                          {t.trip}
+                        </span>
+                      </span>
                     </figcaption>
                   </div>
                 </figure>
