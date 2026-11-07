@@ -74,6 +74,31 @@ function Home() {
 
   const nye = TRIPS.find((t) => t.title.startsWith("New Year"))!;
 
+  // The full-bleed band parallaxes like the closing CTA. scale-115
+  // plus a ±7% travel keeps the frame covered at both ends.
+  const bandRef = useRef<HTMLElement>(null);
+  useGsap(
+    ({ gsap, reduced }) => {
+      if (reduced) return;
+      gsap.fromTo(
+        ".band-media",
+        { yPercent: -7 },
+        {
+          yPercent: 7,
+          ease: "none",
+          scrollTrigger: {
+            trigger: bandRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.1,
+          },
+        },
+      );
+    },
+    bandRef,
+    [],
+  );
+
   return (
     <div className="flex min-h-screen flex-col">
       {/* The house header: the two-tier contact rail + link bar from
@@ -164,13 +189,16 @@ function Home() {
         </SplitFeature>
 
         {/* ── Full-bleed band ──────────────────────────────── */}
-        <section className="relative isolate flex min-h-[72svh] items-end overflow-hidden">
+        <section
+          ref={bandRef}
+          className="relative isolate flex min-h-[72svh] items-end overflow-hidden"
+        >
           <img
             src="/images/nye-2027-brilliant-lady.png"
             alt="Virgin Voyages' Brilliant Lady sailing past the lit Miami skyline under fireworks"
             loading="lazy"
             decoding="async"
-            className="absolute inset-0 -z-10 size-full object-cover"
+            className="band-media absolute inset-0 -z-10 size-full scale-115 object-cover will-change-transform"
           />
           <div
             aria-hidden="true"

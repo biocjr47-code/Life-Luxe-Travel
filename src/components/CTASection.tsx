@@ -13,9 +13,12 @@ import { LEADCONNECTOR } from "~/data/site";
  * plus a ±7% travel keeps the frame covered at both ends of the
  * scrub.
  *
- * The default photograph is Life Luxe's own: the group at the cruise
- * terminal on embarkation day. A page that closes by asking about
- * your group should be showing one.
+ * The default photograph is Life Luxe's own: the Greek coast above
+ * Santorini. It was chosen for what it does NOT have — the
+ * embarkation shot that was here put five faces, a safety cone and
+ * a steel gangway directly behind centred type, and a closing ask
+ * needs quiet behind it, not a crowd. This frees that photograph
+ * for the gallery, where faces are the point.
  *
  * SEPARATION FROM THE FOOTER. These two must not merge — when the
  * CTA and the ink footer shared a ground they ran together into one
@@ -34,8 +37,8 @@ export function CTASection({
   primaryLabel = "Book a consultation",
   primaryHref = LEADCONNECTOR.bookingWidget,
   secondary,
-  image = "/images/nye-vv-group-embarkation.jpg",
-  imageAlt = "The Life Luxe group gathered at the cruise terminal on embarkation day in Miami",
+  image = "/images/greece-caldera.jpg",
+  imageAlt = "The Greek coast from above — deep blue water, a headland, and boats moored below the cliff",
 }: {
   title?: ReactNode;
   lede?: ReactNode;
@@ -86,7 +89,7 @@ export function CTASection({
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(180deg, rgb(12 11 10 / .58) 0%, rgb(12 11 10 / .66) 55%, rgb(12 11 10 / .72) 100%)",
+            "linear-gradient(180deg, rgb(12 11 10 / .62) 0%, rgb(12 11 10 / .58) 50%, rgb(12 11 10 / .66) 100%)",
         }}
       />
 
