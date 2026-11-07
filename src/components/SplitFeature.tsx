@@ -16,6 +16,8 @@ export function SplitFeature({
   imageAlt,
   flip = false,
   footnote,
+  media = "cover",
+  imageFocus,
   children,
 }: {
   heading: string;
@@ -24,6 +26,16 @@ export function SplitFeature({
   imageAlt: string;
   flip?: boolean;
   footnote?: string;
+  /**
+   * "cover" fills the column — right for a landscape of a place.
+   * "portrait" holds the image to 340px on an offset sand panel.
+   * A 600px headshot stretched across a half-page column is a
+   * face at roughly life size, which is not a portrait, it is a
+   * poster.
+   */
+  media?: "cover" | "portrait";
+  /** object-position, for when the default centre crop is wrong. */
+  imageFocus?: string;
   children?: React.ReactNode;
 }) {
   const root = useRef<HTMLElement>(null);
@@ -63,17 +75,42 @@ export function SplitFeature({
   return (
     <section ref={root} className="py-20 lg:py-32">
       <div className="mx-auto grid max-w-[1180px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20 lg:px-11">
-        <figure
-          className={`sp-media overflow-hidden ${flip ? "lg:order-2" : ""}`}
-        >
-          <img
-            src={image}
-            alt={imageAlt}
-            loading="lazy"
-            decoding="async"
-            className="aspect-[4/5] w-full scale-[1.12] object-cover will-change-transform"
-          />
-        </figure>
+        {media === "portrait" ? (
+          <figure className={`sp-media ${flip ? "lg:order-2" : ""}`}>
+            <div className="relative isolate w-full max-w-[340px]">
+              {/* An offset plate, square like everything else, so
+                  the portrait sits ON something instead of floating
+                  in the column. */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 -z-10 translate-x-4 translate-y-4 bg-sand"
+              />
+              <div className="overflow-hidden">
+                <img
+                  src={image}
+                  alt={imageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/5] w-full scale-[1.06] object-cover will-change-transform"
+                  style={imageFocus ? { objectPosition: imageFocus } : undefined}
+                />
+              </div>
+            </div>
+          </figure>
+        ) : (
+          <figure
+            className={`sp-media overflow-hidden ${flip ? "lg:order-2" : ""}`}
+          >
+            <img
+              src={image}
+              alt={imageAlt}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/5] w-full scale-[1.12] object-cover will-change-transform"
+              style={imageFocus ? { objectPosition: imageFocus } : undefined}
+            />
+          </figure>
+        )}
 
         <div className="sp-copy">
           <h2 className="font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.06] tracking-[-0.024em] text-ink">

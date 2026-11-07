@@ -44,14 +44,21 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
         <div
           aria-hidden="true"
           className={`pointer-events-none absolute inset-x-0 top-0 -z-10 transition-[background] duration-300 ${
-            open ? "bottom-0 bg-ink/95" : "-bottom-12"
+            open ? "bottom-0 bg-ink/95" : "-bottom-28"
           }`}
           style={
             open
               ? undefined
               : {
+                  // A RAMP, NOT A BAND. At .86 holding to 52% and
+                  // then cutting off twelve pixels below the bar,
+                  // this painted a hard-edged dark strip across the
+                  // sky — it read as weather rather than as a
+                  // header. The top is lighter and the falloff runs
+                  // much further, so it dissolves into the
+                  // photograph instead of ending on a line.
                   background:
-                    "linear-gradient(180deg, rgb(12 11 10 / .86) 0%, rgb(12 11 10 / .78) 52%, rgb(12 11 10 / .46) 82%, rgb(12 11 10 / 0) 100%)",
+                    "linear-gradient(180deg, rgb(12 11 10 / .62) 0%, rgb(12 11 10 / .50) 34%, rgb(12 11 10 / .30) 60%, rgb(12 11 10 / .10) 82%, rgb(12 11 10 / 0) 100%)",
                 }
           }
         />
@@ -164,8 +171,13 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
                          contrast over the header scrim holds. */
                       className={`block border-b border-white/10 py-3.5 text-sm font-normal tracking-[0.14em] whitespace-nowrap uppercase no-underline transition-colors duration-200 lg:border-0 lg:py-1.5 lg:text-[0.6875rem] lg:tracking-[0.15em] xl:text-[0.75rem] xl:tracking-[0.18em] ${
                         current
-                          ? "text-brand-lift"
-                          : "text-white/90 hover:text-brand-lift"
+                          // The pink marked the current page by
+                          // colour alone, and over the softened
+                          // scrim it measured 3.08:1 against a 4.5
+                          // floor. White label, pink rule: the text
+                          // passes and the accent still shows.
+                          ? "text-white underline decoration-brand-lift decoration-2 underline-offset-[7px]"
+                          : "text-white hover:text-brand-lift"
                       }`}
                     >
                       {item.label}

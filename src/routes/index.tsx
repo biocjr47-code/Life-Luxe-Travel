@@ -152,6 +152,8 @@ function Home() {
           ]}
           image="/images/terry-headshot.jpg"
           imageAlt="Terry Powell, founder of Life Luxe Travel, in a studio portrait — dark sleeveless top, pearl necklace, shoulder-length curls"
+          media="portrait"
+          imageFocus="center 28%"
           footnote="Terry Powell · Founder"
         >
           <div className="mt-8">
