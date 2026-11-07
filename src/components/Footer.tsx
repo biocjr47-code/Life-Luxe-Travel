@@ -33,7 +33,7 @@ export function Footer() {
               alt=""
               width={132}
               height={132}
-              className="size-[112px] object-contain lg:size-[132px]"
+              className="size-[92px] object-contain lg:size-[104px]"
             />
             <p className="measure mt-6 text-[0.9375rem] leading-relaxed text-white/70">
               {SITE.tagline} We partner with group leaders who want to bring

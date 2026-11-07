@@ -27,12 +27,12 @@ export function PillarsPattern() {
     >
       <defs>
         <linearGradient id="llt-pil-ink" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#d1296a" stopOpacity="0.11" />
-          <stop offset="100%" stopColor="#d1296a" stopOpacity="0.03" />
+          <stop offset="0%" stopColor="#d1296a" stopOpacity="0.30" />
+          <stop offset="100%" stopColor="#d1296a" stopOpacity="0.10" />
         </linearGradient>
         <linearGradient id="llt-pil-warm" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#5c534a" stopOpacity="0.11" />
-          <stop offset="100%" stopColor="#5c534a" stopOpacity="0.02" />
+          <stop offset="0%" stopColor="#5c534a" stopOpacity="0.28" />
+          <stop offset="100%" stopColor="#5c534a" stopOpacity="0.08" />
         </linearGradient>
       </defs>
 
@@ -76,7 +76,7 @@ export function PillarsPattern() {
       >
         <path d="M-40 716C280 628 560 690 860 644s380 -78 660 -104" />
       </g>
-      <g fill="#d1296a" fillOpacity="0.1">
+      <g fill="#d1296a" fillOpacity="0.26">
         <circle cx="236" cy="672" r="5" />
         <circle cx="1046" cy="620" r="5" />
         <path

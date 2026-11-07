@@ -28,13 +28,13 @@ export function LedgerPattern() {
     >
       <defs>
         <linearGradient id="llt-led-ink" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#d1296a" stopOpacity="0.10" />
-          <stop offset="70%" stopColor="#d1296a" stopOpacity="0.05" />
-          <stop offset="100%" stopColor="#d1296a" stopOpacity="0.02" />
+          <stop offset="0%" stopColor="#d1296a" stopOpacity="0.30" />
+          <stop offset="70%" stopColor="#d1296a" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#d1296a" stopOpacity="0.08" />
         </linearGradient>
         <linearGradient id="llt-led-warm" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#5c534a" stopOpacity="0.10" />
-          <stop offset="100%" stopColor="#5c534a" stopOpacity="0.02" />
+          <stop offset="0%" stopColor="#5c534a" stopOpacity="0.26" />
+          <stop offset="100%" stopColor="#5c534a" stopOpacity="0.08" />
         </linearGradient>
       </defs>
 
@@ -66,7 +66,7 @@ export function LedgerPattern() {
       <g
         stroke="url(#llt-led-ink)"
         fill="none"
-        strokeWidth="1.5"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeDasharray="7 11"
       >
