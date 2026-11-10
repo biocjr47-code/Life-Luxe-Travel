@@ -269,22 +269,37 @@ export function ContactBubble() {
       </div>
 
       {/* ── The teaser ────────────────────────────────── */}
+      {/* ONE BUBBLE, NOT TWO PANELS. The dismiss used to be a
+          sibling button with its own rounded-r corners sitting
+          against the card's rounded-2xl — the mismatched radii left
+          a small white notch where they met, and the pair read as a
+          card with a cut in it rather than as a speech bubble. The
+          X is inside now, and the tail is a rotated square tucked
+          behind the bubble so only its outer corner shows.
+
+          The comment lives HERE, not inside the ternary below: a
+          JSX comment in an expression slot parses as an object
+          literal and takes the whole file down. */}
       {showTeaser ? (
-        <div className="llt-float llt-teaser-in flex items-stretch [animation:lltTeaserIn_.5s_cubic-bezier(.16,1,.3,1)_both,lltFloat_4.5s_ease-in-out_.5s_infinite]">
+        <div className="group llt-float llt-teaser-in relative [animation:lltTeaserIn_.5s_cubic-bezier(.16,1,.3,1)_both,lltFloat_4.5s_ease-in-out_.5s_infinite]">
+          <span
+            aria-hidden="true"
+            className="absolute right-7 -bottom-1 size-4 rotate-45 rounded-[3px] bg-white transition-colors duration-200 group-hover:bg-brand-wash"
+          />
           <button
             type="button"
             onClick={() => {
               setOpen(true);
               setTeaserDone(true);
             }}
-            className="flex items-center gap-3 rounded-2xl rounded-br-md bg-white py-2.5 pr-3 pl-3 text-left shadow-[0_14px_36px_-12px_rgba(12,11,10,0.4)] ring-1 ring-ink/10 transition-colors duration-200 hover:bg-brand-wash"
+            className="relative flex items-center gap-3.5 rounded-[1.75rem] bg-white py-3 pr-10 pl-3 text-left shadow-[0_16px_40px_-14px_rgba(12,11,10,0.45)] transition-colors duration-200 group-hover:bg-brand-wash"
           >
             <img
               src="/images/terry-headshot.jpg"
               alt=""
-              width={40}
-              height={40}
-              className="size-10 shrink-0 rounded-full object-cover"
+              width={44}
+              height={44}
+              className="size-11 shrink-0 rounded-full object-cover"
             />
             <span className="block">
               <span className="block text-[0.8125rem] font-bold text-ink">
@@ -299,7 +314,7 @@ export function ContactBubble() {
             type="button"
             onClick={() => setTeaserDone(true)}
             aria-label="Dismiss"
-            className="-ml-1 flex w-7 items-start justify-center rounded-r-2xl bg-white pt-2 text-muted ring-1 ring-ink/10 transition-colors duration-200 hover:text-ink"
+            className="absolute top-2.5 right-2.5 z-10 flex size-6 items-center justify-center rounded-full text-muted transition-colors duration-200 hover:bg-ink/10 hover:text-ink"
           >
             <X aria-hidden="true" className="size-3.5" strokeWidth={2.25} />
           </button>
