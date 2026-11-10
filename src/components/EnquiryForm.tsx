@@ -12,9 +12,8 @@ import { submitEnquiry } from "~/integrations/submitEnquiry";
 import { LEADCONNECTOR, SITE } from "~/data/site";
 
 const FIELD =
-  "w-full border border-rule bg-white px-4 py-3.5 text-[0.9375rem] text-ink " +
-  "transition-colors duration-200 placeholder:text-muted/70 " +
-  "focus:border-brand focus:outline-none";
+  "llt-field w-full border border-rule bg-white px-4 py-3.5 text-[0.9375rem] text-ink " +
+  "transition-[border-color,box-shadow] duration-200 placeholder:text-muted/70";
 const LABEL = "block text-[0.8125rem] font-bold tracking-[0.1em] text-ink uppercase";
 const ERROR = "mt-1.5 flex items-start gap-1.5 text-[0.8125rem] text-brand-deep";
 

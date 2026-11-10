@@ -249,7 +249,7 @@ export function ContactBubble() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Write a message…"
-              className="max-h-28 min-h-11 w-full resize-y rounded-2xl border border-rule bg-white px-4 py-2.5 text-[0.875rem] text-ink transition-colors duration-200 placeholder:text-muted/70 focus:border-brand focus:outline-none"
+              className="llt-field max-h-28 min-h-11 w-full resize-y rounded-2xl border border-rule bg-white px-4 py-2.5 text-[0.875rem] text-ink transition-[border-color,box-shadow] duration-200 placeholder:text-muted/70"
             />
             {/* The caption that used to sit here explained that
                 this opens a mail client. It is gone at Terry's

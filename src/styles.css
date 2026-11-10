@@ -286,3 +286,20 @@ html.lenis body { height: auto; }
      entirely rather than sitting there as three static dots. */
   .llt-sparkle { opacity: 0 !important; }
 }
+
+/* ═══ FORM FIELDS OWN THEIR FOCUS STATE ═══════════════════════
+   The global :focus-visible outline sits 3px OUTSIDE the control
+   and carries a 2px radius. On a rounded input that drew a second,
+   squarer border around the one the field already colours — two
+   badly matched borders stacked on each other.
+
+   A field gets one border that turns brand on focus, plus a soft
+   halo in the same colour. That is still an unmistakable focus
+   indicator (a colour change AND a 3px halo), it just stops being
+   two rings. Everything else on the site keeps the global outline. */
+.llt-field:focus-visible,
+.llt-field:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgb(209 41 106 / 0.16);
+}
