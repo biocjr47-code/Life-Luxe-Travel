@@ -1,36 +1,43 @@
 /**
  * Background illustration for the positioning statement.
  *
- * A hot-air balloon climbing away on a dashed line, with birds and
- * a horizon. The sentence beside it is about transformation and
- * celebration — rising, rather than arriving — and a balloon is the
- * one piece of travel iconography that carries that instead of
- * logistics.
+ * It draws the sentence it sits beside: "Travel is more than a
+ * getaway. It is a gateway to connection, celebration and
+ * transformation."
  *
- * The first version here was a constellation of joined dots. It was
- * meant to say "connection" and read as abstract geometry; nothing
- * in it was recognisably travel.
+ *   gateway       an arch, open, with a path running through it
+ *   connection    the path continues beyond and joins two points
+ *   celebration   a scatter of sparks above the arch
+ *   transformation  what is on the far side: a horizon and a
+ *                   rising sun, not the ground you started on
+ *
+ * Earlier versions were a constellation of dots (abstract, read as
+ * geometry) and then a hot-air balloon (travel, but it says escape
+ * rather than arrival, and nothing in it answers "gateway").
  *
  * Drawn, not licensed, in the same hand as the rest, and chosen to
- * avoid repeating what is already used: flight paths in the footer,
- * a trunk and boarding pass in the credentials, a folded map in the
- * ledger, the destinations themselves in the calendar, a checklist
- * by the form.
- *
- * It occupies the two dead zones this section has on a wide screen:
- * the band beneath the statement, which runs to four lines at most,
- * and the right margin past the copy column.
+ * avoid repeating what is used elsewhere: flight paths in the
+ * footer, a trunk and boarding pass in the credentials, a folded
+ * map in the ledger, the destinations themselves in the calendar, a
+ * checklist by the form.
  *
  * THE Y VALUES ARE TUNED TO THE SLICE. The section renders around
  * 613px tall against this 860 viewBox, so `slice` scales to cover
  * and centres — showing roughly y 123..737 and discarding the rest.
- * The balloon first sat at 540..790 and lost its basket off the
- * bottom. Keep new motifs inside that band.
+ * Keep new motifs inside that band.
  *
- * Hidden below lg, where the columns stack and that space is gone.
+ * Hidden below lg, where the columns stack and the space is gone.
  *
  * Decorative: aria-hidden.
  */
+const SPARKS = [
+  { x: 104, y: 246, r: 13 },
+  { x: 196, y: 196, r: 9 },
+  { x: 262, y: 268, r: 7 },
+  { x: 44, y: 318, r: 8 },
+  { x: 228, y: 344, r: 6 },
+];
+
 export function StatementPattern() {
   return (
     <svg
@@ -51,25 +58,26 @@ export function StatementPattern() {
         </linearGradient>
       </defs>
 
-      {/* ── The balloon, lower left ───────────────────── */}
+      {/* ── THE GATEWAY ──────────────────────────────── */}
       <g
-        transform="translate(126 398)"
+        transform="translate(34 372)"
         stroke="url(#llt-stm-ink)"
         fill="none"
-        strokeWidth="2"
+        strokeWidth="2.5"
         strokeLinejoin="round"
       >
-        {/* envelope: a circle flattened into a teardrop by two
-            gores drawn as mirrored arcs */}
-        <path d="M78 4a74 74 0 0 1 74 74c0 38-30 74-56 104l-18 20-18-20C34 152 4 116 4 78A74 74 0 0 1 78 4Z" />
-        <path d="M78 4c-26 26-34 100 0 202M78 4c26 26 34 100 0 202" />
-        <path d="M11 110h134" strokeDasharray="6 9" />
-        {/* the basket and its ropes */}
-        <path d="M60 206l8 20M96 206l-8 20" />
-        <path d="M64 226h28l-4 24H68Z" />
+        {/* the opening */}
+        <path d="M18 330V118a86 86 0 0 1 172 0v212" />
+        {/* the jambs, given depth by a second line */}
+        <path d="M40 330V118a64 64 0 0 1 128 0v212" />
+        {/* a keystone at the crown */}
+        <path d="M92 33h24l6 20H86Z" />
+        {/* plinths */}
+        <path d="M4 330h48M156 330h48" />
+        <path d="M10 344h36M162 344h36" />
       </g>
 
-      {/* The climb it came up on. */}
+      {/* The path: up to the arch, through it, and away. */}
       <g
         stroke="url(#llt-stm-ink)"
         fill="none"
@@ -77,27 +85,30 @@ export function StatementPattern() {
         strokeLinecap="round"
         strokeDasharray="7 11"
       >
-        <path d="M204 706C250 648 196 596 232 540" />
+        <path d="M80 724C104 684 128 656 150 638" />
+        <path d="M150 638C230 584 400 560 548 566" />
+      </g>
+      {/* Two points, joined — the connection the path makes. */}
+      <g fill="url(#llt-stm-ink)">
+        <circle cx="150" cy="638" r="6" />
+        <circle cx="548" cy="566" r="6" />
       </g>
 
-      {/* Birds, further out and smaller, so the eye reads depth. */}
-      <g
-        stroke="url(#llt-stm-warm)"
-        fill="none"
-        strokeWidth="2"
-        strokeLinecap="round"
-      >
-        <path d="M470 470c10-11 20-11 30 0 10-11 20-11 30 0" />
-        <path d="M566 534c7-8 15-8 22 0 7-8 15-8 22 0" />
-        <path d="M662 486c6-6 12-6 18 0 6-6 12-6 18 0" />
+      {/* Sparks above the arch — the celebration. */}
+      <g stroke="url(#llt-stm-ink)" fill="none" strokeWidth="2" strokeLinecap="round">
+        {SPARKS.map((s) => (
+          <path
+            key={`${s.x}-${s.y}`}
+            d={`M${s.x} ${s.y - s.r}V${s.y + s.r}M${s.x - s.r} ${s.y}H${s.x + s.r}`}
+          />
+        ))}
       </g>
 
-      {/* A horizon under all of it. */}
+      {/* ── What is on the far side ──────────────────── */}
       <g stroke="url(#llt-stm-warm)" fill="none" strokeWidth="2">
         <path d="M-40 690h1520" strokeDasharray="7 11" />
       </g>
 
-      {/* ── The sun, right margin past the copy ───────── */}
       <g
         transform="translate(1300 300)"
         stroke="url(#llt-stm-warm)"

@@ -87,7 +87,7 @@ export function CinematicHero({
         alt={imageAlt}
         fetchPriority="high"
         decoding="async"
-        className="ch-img absolute inset-0 -z-10 size-full object-cover will-change-transform"
+        className="ch-img absolute inset-0 -z-10 size-full object-cover [filter:brightness(1.04)_contrast(1.06)_saturate(1.14)] will-change-transform"
         style={{ objectPosition: focus }}
       />
       {/* The top stop is .26, not .44: the header carries its own
@@ -99,6 +99,12 @@ export function CinematicHero({
         className="absolute inset-0 -z-10"
         style={{
           background:
+            // A COOL POOL, NOT A WARM WASH. The brand's near-black
+            // is warm, and over dull overcast grass that mixes to
+            // olive mud — which is what made the hero look dirty
+            // rather than moody. A blue-grey of the same density
+            // sends the shadow side slate instead of brown.
+            //
             // A POOL, NOT A WASH. Two broad gradients dark enough to
             // carry the type also dimmed the mountains and the
             // breaking wave, which are the reason to use this
@@ -107,9 +113,15 @@ export function CinematicHero({
             // work — it puts the density only where the headline,
             // the subtitle and the buttons sit, and reaches zero
             // before it touches the surf on the right.
-            "radial-gradient(118% 92% at 6% 86%, rgb(12 11 10 / .76) 0%, rgb(12 11 10 / .56) 34%, rgb(12 11 10 / .22) 60%, rgb(12 11 10 / 0) 78%)," +
-            "linear-gradient(100deg, rgb(12 11 10 / .40) 0%, rgb(12 11 10 / .18) 36%, rgb(12 11 10 / .02) 60%, rgb(12 11 10 / 0) 72%)," +
-            "linear-gradient(180deg, rgb(12 11 10 / .10) 0%, rgb(12 11 10 / .03) 30%, rgb(12 11 10 / .34) 74%, rgb(12 11 10 / .62) 100%)",
+            // MOBILE IS THE BINDING CONSTRAINT, not desktop. On a
+            // 390px viewport the subtitle sits over the brightest
+            // part of the frame — sky and open sea — where a photo
+            // pixel can be 250+. Desktop puts the same text over
+            // the mountain. Every stop below is set from the mobile
+            // measurement, not from how it looks on a laptop.
+            "radial-gradient(112% 88% at 7% 84%, rgb(14 20 30 / .84) 0%, rgb(14 20 30 / .66) 36%, rgb(14 20 30 / .34) 62%, rgb(14 20 30 / 0) 82%)," +
+            "linear-gradient(100deg, rgb(14 20 30 / .32) 0%, rgb(14 20 30 / .14) 38%, rgb(14 20 30 / 0) 62%)," +
+            "linear-gradient(180deg, rgb(14 20 30 / .08) 0%, rgb(14 20 30 / .02) 34%, rgb(14 20 30 / .34) 76%, rgb(14 20 30 / .58) 100%)",
         }}
       />
 

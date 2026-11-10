@@ -242,3 +242,47 @@ html.lenis body { height: auto; }
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
+/* ═══ THE CONTACT TEASER ══════════════════════════════════════
+   A prompt that drifts beside the launcher until it is dismissed,
+   with a sparkle on the icon. Both are decoration: they must not
+   be the only way to notice the launcher, and they stop dead under
+   prefers-reduced-motion. */
+@keyframes lltFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+
+/* Each sparkle runs the same keyframes on a different delay, so the
+   three of them twinkle out of step instead of blinking together. */
+@keyframes lltSparkle {
+  0%, 70%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  78%           { opacity: 1; transform: scale(1) rotate(18deg); }
+  86%           { opacity: 0.45; transform: scale(0.75) rotate(-12deg); }
+}
+
+/* Pause the drift the moment a pointer or keyboard focus arrives.
+   Specificity matters here: the element also carries a Tailwind
+   arbitrary `[animation:...]` utility, and `animation` is a shorthand
+   that resets animation-play-state — a plain hover: variant lost
+   the cascade and the dismiss button stayed un-clickable. */
+.llt-float:hover,
+.llt-float:focus-within {
+  animation-play-state: paused;
+}
+
+@keyframes lltTeaserIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .llt-float,
+  .llt-sparkle,
+  .llt-teaser-in {
+    animation: none !important;
+  }
+  /* The sparkles exist only as motion, so with motion off they go
+     entirely rather than sitting there as three static dots. */
+  .llt-sparkle { opacity: 0 !important; }
+}

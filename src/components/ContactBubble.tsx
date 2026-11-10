@@ -6,6 +6,7 @@ import {
   MessageCircle,
   Phone,
   Send,
+  Sparkle,
   X,
 } from "lucide-react";
 import { InstagramIcon } from "./BrandIcons";
@@ -31,6 +32,24 @@ import { LEADCONNECTOR, SITE } from "~/data/site";
  * NO SCROLL. The card is sized to fit inside a short window on its
  * own; if anything is added to it, check that again rather than
  * reaching for overflow-y-auto.
+ *
+ * THE TEASER is a prompt, not a message. It says "have a question"
+ * because that is what the card answers — it does not say "Terry is
+ * typing" or imply anyone is waiting. It appears after a delay so
+ * it does not land on someone still reading the hero, it can be
+ * dismissed, and once dismissed it stays dismissed for the session.
+ * Coming back on every navigation is what makes these hated.
+ *
+ * THE DRIFT PAUSES ON HOVER AND ON FOCUS. A target that never
+ * stops moving is a target that is hard to hit; the dismiss button
+ * failed an automated click for exactly that reason, and anyone
+ * with a motor difficulty would hit the same wall.
+ *
+ * The drift and the sparkle are decoration. The launcher is a
+ * labelled button with or without them, they are hidden from
+ * assistive tech, and they stop dead under prefers-reduced-motion
+ * — the sparkles go entirely rather than sitting there as three
+ * static dots.
  *
  * IF THE GOHIGHLEVEL CHAT WIDGET IS ADDED, its script injects its
  * own bubble into this same corner. Remove this component then, or
@@ -75,10 +94,49 @@ const ACTIONS = [
   },
 ] as const;
 
+/** Positions and offsets for the launcher's twinkle. */
+const SPARKLES = [
+  { cls: "-top-1 -left-1 size-3.5", delay: "0s" },
+  { cls: "-right-0.5 top-2 size-2.5", delay: "1.2s" },
+  { cls: "bottom-0 -left-2 size-2.5", delay: "2.4s" },
+] as const;
+
+/** How long before the prompt appears. Long enough that it does not
+ *  land on top of someone still reading the hero. */
+const TEASER_DELAY = 3200;
+
 export function ContactBubble() {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [teaserReady, setTeaserReady] = useState(false);
+  const [teaserDone, setTeaserDone] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
+
+  // Once dismissed it stays dismissed for the session. Coming back
+  // on every navigation is what makes these things hated.
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem("llt-teaser-dismissed") === "1") {
+        setTeaserDone(true);
+        return;
+      }
+    } catch {
+      // Private mode or blocked storage: show it, do not crash.
+    }
+    const t = setTimeout(() => setTeaserReady(true), TEASER_DELAY);
+    return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    if (!teaserDone) return;
+    try {
+      sessionStorage.setItem("llt-teaser-dismissed", "1");
+    } catch {
+      // Nothing to do — it simply shows again next page.
+    }
+  }, [teaserDone]);
+
+  const showTeaser = teaserReady && !teaserDone && !open;
 
   useEffect(() => {
     if (!open) return;
@@ -210,21 +268,80 @@ export function ContactBubble() {
         </form>
       </div>
 
+      {/* ── The teaser ────────────────────────────────── */}
+      {showTeaser ? (
+        <div className="llt-float llt-teaser-in flex items-stretch [animation:lltTeaserIn_.5s_cubic-bezier(.16,1,.3,1)_both,lltFloat_4.5s_ease-in-out_.5s_infinite]">
+          <button
+            type="button"
+            onClick={() => {
+              setOpen(true);
+              setTeaserDone(true);
+            }}
+            className="flex items-center gap-3 rounded-2xl rounded-br-md bg-white py-2.5 pr-3 pl-3 text-left shadow-[0_14px_36px_-12px_rgba(12,11,10,0.4)] ring-1 ring-ink/10 transition-colors duration-200 hover:bg-brand-wash"
+          >
+            <img
+              src="/images/terry-headshot.jpg"
+              alt=""
+              width={40}
+              height={40}
+              className="size-10 shrink-0 rounded-full object-cover"
+            />
+            <span className="block">
+              <span className="block text-[0.8125rem] font-bold text-ink">
+                Have a question?
+              </span>
+              <span className="mt-0.5 block text-[0.8125rem] text-muted">
+                Send us a message.
+              </span>
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setTeaserDone(true)}
+            aria-label="Dismiss"
+            className="-ml-1 flex w-7 items-start justify-center rounded-r-2xl bg-white pt-2 text-muted ring-1 ring-ink/10 transition-colors duration-200 hover:text-ink"
+          >
+            <X aria-hidden="true" className="size-3.5" strokeWidth={2.25} />
+          </button>
+        </div>
+      ) : null}
+
       {/* ── The launcher ──────────────────────────────── */}
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-controls={PANEL_ID}
-        aria-label={open ? "Close contact options" : "Contact Life Luxe Travel"}
-        className="flex size-14 items-center justify-center rounded-full bg-brand text-white shadow-[0_10px_30px_-8px_rgba(209,41,106,0.7)] transition-[transform,background-color] duration-300 ease-luxe hover:scale-105 hover:bg-brand-deep"
-      >
-        {open ? (
-          <X aria-hidden="true" className="size-[18px]" strokeWidth={2} />
-        ) : (
-          <MessageCircle aria-hidden="true" className="size-6" strokeWidth={1.75} />
-        )}
-      </button>
+      <div className="relative">
+        {/* Sparkles. Decorative only — the launcher is already a
+            labelled button, so nothing here carries meaning and
+            all three are hidden from assistive tech. They stagger
+            off one keyframe set so they twinkle out of step. */}
+        {!open ? (
+          <span aria-hidden="true" className="pointer-events-none absolute inset-0">
+            {SPARKLES.map((s) => (
+              <Sparkle
+                key={s.cls}
+                className={`llt-sparkle absolute ${s.cls} text-brand-lift`}
+                style={{ animation: `lltSparkle 3.6s ease-in-out ${s.delay} infinite` }}
+              />
+            ))}
+          </span>
+        ) : null}
+
+        <button
+          type="button"
+          onClick={() => {
+            setOpen((v) => !v);
+            setTeaserDone(true);
+          }}
+          aria-expanded={open}
+          aria-controls={PANEL_ID}
+          aria-label={open ? "Close contact options" : "Contact Life Luxe Travel"}
+          className="flex size-14 items-center justify-center rounded-full bg-brand text-white shadow-[0_10px_30px_-8px_rgba(209,41,106,0.7)] transition-[transform,background-color] duration-300 ease-luxe hover:scale-105 hover:bg-brand-deep"
+        >
+          {open ? (
+            <X aria-hidden="true" className="size-[18px]" strokeWidth={2} />
+          ) : (
+            <MessageCircle aria-hidden="true" className="size-6" strokeWidth={1.75} />
+          )}
+        </button>
+      </div>
     </div>
   );
 }
