@@ -23,7 +23,7 @@ export function PillarsPattern() {
       focusable="false"
       viewBox="0 0 1440 760"
       preserveAspectRatio="xMidYMid slice"
-      className="pointer-events-none absolute inset-0 size-full"
+      className="pointer-events-none absolute inset-0 -z-10 size-full"
     >
       <defs>
         <linearGradient id="llt-pil-ink" x1="0" y1="0" x2="1" y2="1">

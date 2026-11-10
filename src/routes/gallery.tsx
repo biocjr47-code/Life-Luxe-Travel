@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Layout } from "~/components/Layout";
 import { PageHero } from "~/components/PageHero";
 import { Container } from "~/components/Container";
+import { LedgerPattern } from "~/components/LedgerPattern";
 import { SectionHeading } from "~/components/SectionHeading";
 import { PhotoGrid } from "~/components/PhotoGrid";
 import { Reveal } from "~/components/Reveal";
@@ -73,7 +74,10 @@ function Gallery() {
       ))}
 
       {/* ── Send us yours ───────────────────────────────────── */}
-      <section className="py-20 lg:py-24">
+      <section className="relative isolate overflow-clip py-20 lg:py-24">
+        <span className="pointer-events-none absolute inset-0 -z-10 opacity-45">
+          <LedgerPattern />
+        </span>
         <Container>
           <div className="mx-auto max-w-[44rem] text-center">
             <SectionHeading

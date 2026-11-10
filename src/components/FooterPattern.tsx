@@ -21,7 +21,7 @@ export function FooterPattern() {
       focusable="false"
       viewBox="0 0 1440 520"
       preserveAspectRatio="xMidYMid slice"
-      className="pointer-events-none absolute inset-0 size-full"
+      className="pointer-events-none absolute inset-0 -z-10 size-full"
     >
       {/* The arcs fade out towards the bottom so the legal line at
           the foot sits on clean plum. */}

@@ -3,6 +3,7 @@ import { ArrowRight, Cake, Gift, Palmtree, Snowflake, Sun } from "lucide-react";
 import { Layout } from "~/components/Layout";
 import { PageHero } from "~/components/PageHero";
 import { Container } from "~/components/Container";
+import { CalendarPattern } from "~/components/CalendarPattern";
 import { SectionHeading } from "~/components/SectionHeading";
 import { Button } from "~/components/Button";
 import { Reveal } from "~/components/Reveal";
@@ -119,7 +120,10 @@ function GroupTrips() {
       </section>
 
       {/* ── Custom getaways ─────────────────────────────────── */}
-      <section className="border-y border-rule bg-ivory py-20 lg:py-24">
+      <section className="relative isolate overflow-clip border-y border-rule bg-ivory py-20 lg:py-24">
+        <span className="pointer-events-none absolute inset-0 -z-10 opacity-45">
+          <CalendarPattern />
+        </span>
         <Container>
           <Reveal>
             <SectionHeading

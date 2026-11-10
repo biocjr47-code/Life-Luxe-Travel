@@ -61,3 +61,4 @@ on the page. If a Commons image is ever added back, it needs one.
 | File | Where | Source |
 |---|---|---|
 | `dest-travellers.jpg` | "Or somewhere else entirely" band | https://www.pexels.com/photo/silhouette-of-person-in-airport-227690/ |
+| `about-hero.jpg` | About page hero | https://www.pexels.com/photo/the-swimming-pool-of-the-la-corbel-resort-in-palawan-14630857/ |

@@ -3,6 +3,7 @@ import { Quote } from "lucide-react";
 import { Layout } from "~/components/Layout";
 import { PageHero } from "~/components/PageHero";
 import { Container } from "~/components/Container";
+import { StatementPattern } from "~/components/StatementPattern";
 import { SectionHeading } from "~/components/SectionHeading";
 import { Reveal } from "~/components/Reveal";
 import { CTASection } from "~/components/CTASection";
@@ -31,7 +32,10 @@ function Testimonials() {
         subtitle="In their own words, after the trip was over."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="relative isolate overflow-clip py-20 lg:py-28">
+        <span className="pointer-events-none absolute inset-0 -z-10 opacity-45">
+          <StatementPattern />
+        </span>
         <Container>
           <Reveal>
             <SectionHeading

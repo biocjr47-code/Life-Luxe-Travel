@@ -54,6 +54,26 @@ const FACTS = [
  * kind", which is the one phrase a group leader cannot find
  * themselves in.
  */
+/**
+ * Three of Terry's own journeys, under the list of trip kinds, so
+ * the section shows the range it describes rather than only naming
+ * it. Alt text written from the photographs, not the filenames.
+ */
+const ABOUT_PHOTOS = [
+  {
+    src: "/images/derby-our-group.jpg",
+    alt: "The Life Luxe group together in Derby day hats at Churchill Downs",
+  },
+  {
+    src: "/images/marrakech-majorelle-pavilion.jpg",
+    alt: "The cobalt blue pavilion at the Jardin Majorelle in Marrakech",
+  },
+  {
+    src: "/images/sa-table-mountain-view.jpg",
+    alt: "A Life Luxe traveller above Cape Town with Table Mountain behind her",
+  },
+];
+
 const TRIP_KINDS = [
   "Wellness retreats",
   "Church getaways",
@@ -69,15 +89,15 @@ function About() {
   return (
     <Layout overlay>
       <PageHero
-        image="/images/greece-terry-by-the-water.jpg"
-        imageAlt="Terry Powell, founder of Life Luxe Travel, standing by the water in Greece"
-        focus="center 32%"
-        title="Hi, I'm Terry"
-        subtitle="Founder, travel expert, and your partner in creating extraordinary group experiences."
+        image="/images/about-hero.jpg"
+        imageAlt="An infinity pool at the edge of a resort terrace, looking out over open blue sea"
+        focus="center 58%"
+        title="About Me"
+        subtitle="Hi, I'm Terry — founder, travel expert, and your partner in creating extraordinary group experiences."
       />
 
       {/* ── The welcome ─────────────────────────────────────── */}
-      <section className="pt-20 pb-4 lg:pt-28">
+      <section className="border-b border-rule bg-brand-wash py-16 lg:py-20">
         <Container>
           <Reveal>
             <p className="mx-auto max-w-[52rem] text-center font-display text-[clamp(1.375rem,2.6vw,1.875rem)] leading-[1.4] text-ink italic">
@@ -202,6 +222,22 @@ function About() {
                 <p className="border-t border-rule py-4 font-display text-[1.125rem] leading-snug text-ink">
                   {kind}
                 </p>
+              </Reveal>
+            ))}
+          </ul>
+
+          <ul className="mt-12 grid gap-5 sm:grid-cols-3">
+            {ABOUT_PHOTOS.map((p, i) => (
+              <Reveal as="li" key={p.src} delay={i * 90}>
+                <figure className="overflow-hidden">
+                  <img
+                    src={p.src}
+                    alt={p.alt}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-[1100ms] ease-luxe hover:scale-[1.04]"
+                  />
+                </figure>
               </Reveal>
             ))}
           </ul>

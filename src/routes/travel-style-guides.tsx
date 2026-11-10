@@ -3,6 +3,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { Layout } from "~/components/Layout";
 import { PageHero } from "~/components/PageHero";
 import { Container } from "~/components/Container";
+import { PillarsPattern } from "~/components/PillarsPattern";
 import { SectionHeading } from "~/components/SectionHeading";
 import { Reveal } from "~/components/Reveal";
 import { CTASection } from "~/components/CTASection";
@@ -32,7 +33,10 @@ function StyleGuides() {
         subtitle="What to actually pack, for the trips we actually run."
       />
 
-      <section className="py-20 lg:py-28">
+      <section className="relative isolate overflow-clip py-20 lg:py-28">
+        <span className="pointer-events-none absolute inset-0 -z-10 opacity-45">
+          <PillarsPattern />
+        </span>
         <Container>
           <Reveal>
             <SectionHeading

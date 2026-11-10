@@ -32,7 +32,7 @@ export function CalendarPattern() {
       focusable="false"
       viewBox="0 0 1440 2200"
       preserveAspectRatio="xMaxYMid slice"
-      className="pointer-events-none absolute inset-0 hidden size-full lg:block"
+      className="pointer-events-none absolute inset-0 -z-10 hidden size-full lg:block"
     >
       <defs>
         <linearGradient id="llt-cal-ink" x1="0" y1="0" x2="0" y2="1">

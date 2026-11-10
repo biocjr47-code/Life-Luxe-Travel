@@ -24,7 +24,7 @@ export function ChecklistPattern() {
       focusable="false"
       viewBox="0 0 1440 820"
       preserveAspectRatio="xMinYMid slice"
-      className="pointer-events-none absolute inset-0 hidden size-full lg:block"
+      className="pointer-events-none absolute inset-0 -z-10 hidden size-full lg:block"
     >
       <defs>
         <linearGradient id="llt-chk-ink" x1="0" y1="0" x2="1" y2="1">

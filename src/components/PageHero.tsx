@@ -1,5 +1,6 @@
-import type { ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import { Container } from "./Container";
+import { useGsap } from "~/lib/motion";
 
 /**
  * The photographic page opener.
@@ -14,6 +15,17 @@ import { Container } from "./Container";
  * contrast without flattening the whole photograph. The vertical
  * one guarantees a floor under the text whatever the image is
  * doing down there.
+ *
+ * THE PUSH-IN is the same move as the homepage hero: the photograph
+ * starts at 1.08 and settles to 1 across the section, scrubbed
+ * against the scroll, so it reads as the frame settling rather than
+ * as a Ken Burns loop. It is scoped to this section's own ref, so
+ * six pages running the same component never fight over one
+ * selector.
+ *
+ * overflow-clip, not overflow-hidden: the scaled image has to be
+ * cropped, but "hidden" would make this a scroll container and kill
+ * any sticky inside it — the trap that froze the calendar's year.
  */
 export function PageHero({
   title,
@@ -33,9 +45,34 @@ export function PageHero({
   focus?: string;
   children?: ReactNode;
 }) {
+  const root = useRef<HTMLElement>(null);
+
+  useGsap(
+    ({ gsap, reduced }) => {
+      if (reduced) return;
+      gsap.fromTo(
+        ".ph-img",
+        { scale: 1.08 },
+        {
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: root.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        },
+      );
+    },
+    root,
+    [],
+  );
+
   return (
     <section
-      className={`relative isolate flex items-end overflow-hidden ${
+      ref={root}
+      className={`relative isolate flex items-end overflow-clip ${
         size === "full"
           ? "min-h-[86svh] lg:min-h-[92svh]"
           : "min-h-[58svh] lg:min-h-[66svh]"
@@ -47,7 +84,7 @@ export function PageHero({
         // The largest paint on the page. Never lazy-load it.
         fetchPriority="high"
         decoding="async"
-        className="absolute inset-0 -z-10 size-full object-cover"
+        className="ph-img absolute inset-0 -z-10 size-full object-cover will-change-transform"
         style={{ objectPosition: focus }}
       />
       <div
@@ -55,8 +92,8 @@ export function PageHero({
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(104deg, rgb(12 11 10 / .56) 0%, rgb(12 11 10 / .22) 40%, rgb(12 11 10 / 0) 62%)," +
-            "linear-gradient(180deg, rgb(12 11 10 / .40) 0%, rgb(12 11 10 / .12) 30%, rgb(12 11 10 / .70) 68%, rgb(12 11 10 / .96) 100%)",
+            "linear-gradient(104deg, rgb(14 20 30 / .54) 0%, rgb(14 20 30 / .20) 40%, rgb(14 20 30 / 0) 62%)," +
+            "linear-gradient(180deg, rgb(14 20 30 / .56) 0%, rgb(14 20 30 / .14) 30%, rgb(14 20 30 / .70) 68%, rgb(14 20 30 / .90) 100%)",
         }}
       />
 
@@ -69,7 +106,7 @@ export function PageHero({
         </h1>
         {subtitle ? (
           <p
-            className="mt-5 max-w-[34ch] font-display text-[clamp(1.0625rem,2vw,1.375rem)] text-brand-lift italic"
+            className="mt-5 max-w-[34ch] font-display text-[clamp(1.0625rem,2vw,1.375rem)] text-white/90 italic"
             style={{ textShadow: "0 1px 26px rgb(12 11 10 / .75)" }}
           >
             {subtitle}
